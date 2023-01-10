@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "homes#top"
   get "/about" => "homes#about", as: "about"
 
-  #---------------------ユーザー↓-----------------------------
+  #---------------------デバイス↓-----------------------------
 
   #ユーザーデバイス認証用
   devise_for :users, skip: [:passwords], controllers: {
@@ -11,22 +11,23 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
 
-  #ユーザー側機能ルート
-  scope module: :public do
-    resources :users, only: [:show, :edit, :update]
-    resources :posts, only: [:new, :create, :index, :show, :destroy] do
-      resources :comments, only: [:create, :destroy] #ネスト化
-    end
-  end
-
-  #----------------------管理者↓-----------------------------
-
   #管理者デバイス認証用
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
 
-  #管理者側機能ルート
+   #---------------------デバイス↑-----------------------------
+
+  #ユーザー側ルート
+  scope module: :public do
+    resources :users, only: [:show, :edit, :update]
+    resources :posts, only: [:new, :create, :index, :show, :destroy] do
+      resources :comments, only: [:create, :destroy] #コメント機能ネスト化
+      resource :favorites, only: [:create, :destroy] #いいね機能ネスト化
+    end
+  end
+
+  #管理者側ルート
   namespace :admin do
     get "/" => "homes#top"
   end

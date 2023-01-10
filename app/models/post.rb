@@ -2,7 +2,8 @@ class Post < ApplicationRecord
 
   has_one_attached :image #ActiveStorage使用
   belongs_to :user #userが1側
-  has_many :comments, dependent: :destroy #投稿には複数コメントつくのでcommentが多側
+  has_many :comments, dependent: :destroy #commentが多側
+  has_many :favorites, dependent: :destroy #favoriteが多側
 
   #投稿時写真有無判断
   def get_image
@@ -12,6 +13,11 @@ class Post < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
+  end
+
+  #いいね機能で使用
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
   end
 
 end
