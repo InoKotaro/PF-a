@@ -8,6 +8,7 @@
     <% end %>
     <p>タイトル：<%= post.title %></p>
     <p>説明：<%= post.introduction %></p>
+    <p><%= link_to "#{post.comments.count} コメント", post_path(post.id) %></p> <!--コメント数-->
 
   </div>
 

@@ -2,6 +2,7 @@ class Post < ApplicationRecord
 
   has_one_attached :image #ActiveStorage使用
   belongs_to :user #userが1側
+  has_many :comments, dependent: :destroy #投稿には複数コメントつくのでcommentが多側
 
   #投稿時写真有無判断
   def get_image

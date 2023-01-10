@@ -11,10 +11,12 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
 
-  #ユーザー側ルート
+  #ユーザー側機能ルート
   scope module: :public do
     resources :users, only: [:show, :edit, :update]
-    resources :posts, only: [:new, :create, :index, :show, :destroy]
+    resources :posts, only: [:new, :create, :index, :show, :destroy] do
+      resources :comments, only: [:create, :destroy] #ネスト化
+    end
   end
 
   #----------------------管理者↓-----------------------------
@@ -24,7 +26,7 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
-  #管理者側ルート
+  #管理者側機能ルート
   namespace :admin do
     get "/" => "homes#top"
   end
