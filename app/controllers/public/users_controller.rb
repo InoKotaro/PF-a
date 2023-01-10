@@ -12,7 +12,7 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params) #パラメータ有り
+    @user.update(user_params) #パラメータあり
     redirect_to user_path(@user)
   end
 

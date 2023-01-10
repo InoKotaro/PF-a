@@ -5,11 +5,16 @@ class Public::PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params) #パラメータ有り
+    @post = Post.new(post_params) #パラメータ
     @post.user_id = current_user.id
+    #if
     @post.save
     redirect_to posts_path #一覧へ遷移
+    #else
+    #  render :new
+    #end
   end
+
 
   def index
     @posts = Post.all

@@ -21,9 +21,9 @@ class Public::SessionsController < Devise::SessionsController
 
   protected
 
-  #ログイン後一覧ページへ遷移
+  #ログイン後トップページへ遷移
   def after_sign_in_path_for(resource)
-    posts_path
+    root_path
   end
 
   #ログアウト後トップページへ遷移
