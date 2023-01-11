@@ -6,9 +6,10 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy #favoriteが多側
 
   #バリデーション 文字数指定あり
-  #validates :title, length: { minimum: 1, maximum: 15 }, presence: true, uniqueness: true
-  #validates :introduction, length: { minimum: 1, maximum: 30 }, presence: true, uniqueness: true
-  #validates :image, presence: true, uniqueness: true
+  validates :image, presence: true
+  validates :title, length: { minimum: 1, maximum: 15 }, presence: true, uniqueness: true
+  validates :introduction, length: { minimum: 1, maximum: 200 }, presence: true, uniqueness: true
+
 
   #投稿時写真有無判断
   def get_image

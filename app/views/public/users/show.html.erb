@@ -8,5 +8,16 @@
   <% end %>
 </div>
 
-<!--ユーザーの投稿一覧テンプレ
-<%= render 'post/list', posts: @posts %>-->
+<!--ユーザーの投稿一覧-->
+<% @posts.each do |post| %>
+<div>
+  <p><%= image_tag post.user.get_profile_image(100,100) %></p> <!--ユーザーアイコン-->
+  <p><%= post.user.name %></p> <!--名前-->
+  <%= link_to post_path(post.id) do %>
+    <%= image_tag post.get_image %> <!--投稿画像-->
+  <% end %>
+  <p>タイトル：<%= post.title %></p> <!--タイトル-->
+  <p>紹介：<%= post.introduction %></p> <!--紹介文-->
+
+</div>
+<% end %>

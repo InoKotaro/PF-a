@@ -2,8 +2,8 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts #特定ユーザーの全投稿を変数に格納/
-                              #多側を取得するのでテーブル名複数形表記
+    @posts = @user.posts.page(params[:page])  #特定ユーザーの全投稿を変数に格納/
+                                              #多側を取得するのでテーブル名複数形表記
   end
 
   def edit

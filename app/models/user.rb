@@ -9,6 +9,11 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy #commentが多側
   has_many :favorites, dependent: :destroy #favoriteが多側
 
+  #バリデーション 文字数指定あり
+  validates :name, length: { minimum: 2, maximum: 15 }, presence: true, uniqueness: true
+  validates :introduction, length: { maximum: 30 }
+
+
   #プロフィール画像サイズ処理
   def get_profile_image(width, height)
     if profile_image.attached?
