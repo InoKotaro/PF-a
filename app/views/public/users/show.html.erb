@@ -3,23 +3,18 @@
   <h3><%= @user.name %></h3>
   <%= image_tag @user.get_profile_image(100,100) %>
   <p><%= @user.introduction %></p>
+
   <% if @user == current_user %> <!--ログイン中ユーザーにだけ表示-->
     <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
   <% end %>
 </div>
 
-<%= render 'public/relationships/follow_btn', user: @user %>
-
-<!--ユーザーの投稿一覧-->
-<% @posts.each do |post| %>
-<div>
-  <p><%= image_tag post.user.get_profile_image(100,100) %></p> <!--ユーザーアイコン-->
-  <p><%= post.user.name %></p> <!--名前-->
-  <%= link_to post_path(post.id) do %>
-    <%= image_tag post.get_image %> <!--投稿画像-->
-  <% end %>
-  <p>タイトル：<%= post.title %></p> <!--タイトル-->
-  <p>紹介：<%= post.introduction %></p> <!--紹介文-->
-
+<div> <!--フォロー機能-->
+  <%= render 'public/relationships/follow_btn', user: @user %>
 </div>
-<% end %>
+
+<div> <!--ユーザーの投稿一覧-->
+  <%= render 'public/posts/post_list', posts: @posts %>
+</div>
+
+

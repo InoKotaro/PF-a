@@ -1,36 +1,25 @@
-  <div>
-    <!--投稿詳細-->
-    <%= image_tag @post.user.get_profile_image(100,100) %> <!--ユーザーアイコン-->
-    <%= @post.user.name %></p> <!--名前-->
-    <%= image_tag @post.get_image %> <!--投稿画像表示-->
-    <p><%= @post.title %></p> <!--タイトル-->
-    <p><%= @post.introduction %></p> <!--紹介文-->
-    <p><%= link_to "#{@post.comments.count} コメント", post_path(current_user) %></p> <!--コメント数-->
+<div>
+  <!--投稿詳細-->
+  <%= image_tag @post.user.get_profile_image(100,100) %> <!--ユーザーアイコン-->
+  <%= @post.user.name %></p> <!--名前-->
+  <%= image_tag @post.get_image %> <!--投稿画像表示-->
+  <p><%= @post.title %></p> <!--タイトル-->
+  <p><%= @post.introduction %></p> <!--紹介文-->
+  <p><%= link_to "#{@post.comments.count} コメント", post_path(current_user) %></p> <!--コメント数-->
 
-    <% if @post.user == current_user %> <!--投稿者とログイン中ユーザーが一致した場合のみ削除ボタン表示-->
-      <%= link_to "削除", post_path(@post), method: :delete %>
-    <% end %>
+  <% if @post.user == current_user %> <!--投稿者とログイン中ユーザーが一致した場合のみ削除ボタン表示-->
+    <%= link_to "削除", post_path(@post), method: :delete %>
+  <% end %>
 
-    <!--いいね機能テンプレート化-->
-    <%= render 'public/favorites/favorite', post: @post %>
-  </div>
+  <!--いいね機能テンプレート化-->
+  <%= render 'public/favorites/favorite', post: @post %>
+</div>
 
-  <div> <!--コメント投稿フォーム-->
-    <%= form_with model: [@post, @comment] do |f| %>
-        <%= f.text_area :comment, rows: '3', placeholder: "コメントをここに" %>
-        <%= f.submit "送信する" %>
-    <% end %>
-  </div>
+<div> <!--コメント投稿フォーム-->
+  <%= render 'public/comments/comment_form', post: @post, comment: @comment %>
+</div>
 
-  <div> <!--コメント一覧-->
-    <% @post.comments.each do |comment| %>
-      <p><%= image_tag comment.user.get_profile_image(100,100) %></p>
-      <%= comment.user.name %>
-      <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
-      <p><%= comment.comment %></p>
-      <% if comment.user == current_user %> <!--コメント者とログイン中ユーザーが一致した場合のみ削除ボタン表示-->
-        <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
-      <% end %>
-    <% end %>
-  </div>
+<div> <!--コメント一覧-->
+  <%= render 'public/comments/comment_list', post: @post %>
+</div>
 

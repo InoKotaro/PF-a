@@ -23,7 +23,7 @@ Rails.application.routes.draw do
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
     end
-    resources :posts, only: [:new, :create, :index, :show, :destroy] do
+    resources :posts, only: [:new, :create, :show, :destroy] do
       resources :comments, only: [:create, :destroy] #コメント機能ネスト化
       resource :favorites, only: [:create, :destroy] #いいね機能ネスト化
     end

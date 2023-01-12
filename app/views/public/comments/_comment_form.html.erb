@@ -1,0 +1,7 @@
+<!--2行目の「post」「comment」が元インスタンス変数-->
+<%= form_with model: [post, comment] do |f| %>
+
+  <%= f.text_area :comment, rows: '3', placeholder: "コメントをここに" %>
+  <%= f.submit "送信する" %>
+
+<% end %>

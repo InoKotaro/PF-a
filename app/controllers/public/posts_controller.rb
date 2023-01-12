@@ -1,6 +1,8 @@
 class Public::PostsController < ApplicationController
   before_action :is_matching_login_user, only: [:create, :destroy]
 
+  #index機能はhomes/topを使用
+
   def new
     @post = Post.new
   end
@@ -13,11 +15,6 @@ class Public::PostsController < ApplicationController
     else
       render :new #保存失敗はnewページへ遷移
     end
-  end
-
-  def index
-    @posts = Post.all
-    @posts_page = Post.page(params[:page])
   end
 
   def show

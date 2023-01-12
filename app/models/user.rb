@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy #postが多側
   has_many :comments, dependent: :destroy #commentが多側
   has_many :favorites, dependent: :destroy #favoriteが多側
+
   #--------------------------------フォロー機能↓-------------------------------------
   #フォロー,フォロワーの関係
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
@@ -16,24 +17,24 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower #一覧で使用
   #--------------------------------フォロー機能↑-------------------------------------
 
-  #バリデーション 文字数指定あり
+  #名前,,自己紹介文バリデーション 文字数指定あり
   validates :name, length: { minimum: 2, maximum: 15 }, presence: true, uniqueness: true
   validates :introduction, length: { maximum: 30 }
 
-  #----------------フォロー機能---リレーションシップコントで使うメソッド↓------------
-    # フォローしたときの処理
+  #----------------フォロー機能---relationshipsコントローラで使うメソッド↓------------
+  #フォロー時
   def follow(user_id)
     relationships.create(followed_id: user_id)
   end
-  # フォローを外すときの処理
+  #フォローを解除時
   def unfollow(user_id)
     relationships.find_by(followed_id: user_id).destroy
   end
-  # フォローしているか判定
+  #フォロー判定
   def following?(user)
     followings.include?(user)
   end
-  #----------------フォロー機能---リレーションシップコントで使うメソッド↓------------
+  #----------------フォロー機能---relationshipsコントローラで使うメソッド↑------------
 
 
 

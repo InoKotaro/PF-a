@@ -1,0 +1,21 @@
+<!--3行目「posts」部分が元インスタンス変数-->
+
+<% posts.each do |post| %>
+
+  <p><%= link_to user_path(post.user) do %></p> <!--画像リンク化-->
+    <%= image_tag post.user.get_profile_image(100,100) %><!--ユーザーアイコン-->
+  <% end %>
+
+  <p><%= post.user.name %></p> <!--名前-->
+
+  <p><%= link_to post_path(post.id) do %></p> <!--画像リンク化-->
+    <%= image_tag post.get_image %> <!--投稿画像-->
+  <% end %>
+
+  <p><%= post.created_at.strftime('%Y/%m/%d') %></p> <!--投稿日-->
+  <p>スポット：<%= post.title %></p> <!--タイトル-->
+  <p>紹介：<%= post.introduction %></p> <!--紹介文-->
+  <p><%= link_to "#{post.comments.count} コメント" %></p> <!--コメント数-->
+  <%= render "public/favorites/favorite", post: post %><!--いいね数-->
+
+<% end %>
