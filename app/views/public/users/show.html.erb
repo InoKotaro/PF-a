@@ -8,6 +8,8 @@
   <% end %>
 </div>
 
+<%= render 'public/relationships/follow_btn', user: @user %>
+
 <!--ユーザーの投稿一覧-->
 <% @posts.each do |post| %>
 <div>

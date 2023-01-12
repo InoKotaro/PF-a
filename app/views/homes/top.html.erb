@@ -1,18 +1,21 @@
-<% @posts.each do |post| %>
+  <% @posts.each do |post| %>
 
-  <div>
-    <p><%= image_tag post.user.get_profile_image(100,100) %></p><!--ユーザーアイコン-->
-    <p><%= post.user.name %></p> <!--名前-->
-    <p><%= link_to post_path(post.id) do %></p> <!--画像リンク化-->
-    <p><%= post.created_at.strftime('%Y/%m/%d') %></p> <!--投稿日-->
-      <%= image_tag post.get_image %>
-    <% end %>
-    <p>スポット：<%= post.title %></p> <!--タイトル-->
-    <p>紹介：<%= post.introduction %></p> <!--紹介文-->
-  </div>
+    <div>
+      <p><%= image_tag post.user.get_profile_image(100,100) %></p><!--ユーザーアイコン-->
+      <p><%= post.user.name %></p> <!--名前-->
+      <p><%= post.created_at.strftime('%Y/%m/%d') %></p> <!--投稿日-->
+      <p><%= link_to post_path(post.id) do %></p> <!--画像リンク化-->
+        <%= image_tag post.get_image %>
+      <% end %>
+      <p>スポット：<%= post.title %></p> <!--タイトル-->
+      <p>紹介：<%= post.introduction %></p> <!--紹介文-->
+      <p><%=  "#{post.comments.count} コメント" %></p> <!--コメント数-->
+      <p><%= "#{post.favorites.count} いいね" %> </p><!--いいね数-->
 
-<% end %>
+    </div>
+
+  <% end %>
 
 <!--ページネーション-->
-<%= paginate @posts %>
+<%= paginate @posts_page %>
 

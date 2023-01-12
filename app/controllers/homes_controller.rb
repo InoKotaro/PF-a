@@ -1,7 +1,8 @@
 class HomesController < ApplicationController
 
   def top
-    @posts = Post.page(params[:page])
+    @posts = Post.all
+    @posts_page = Post.page(params[:page])
   end
 
   def about
