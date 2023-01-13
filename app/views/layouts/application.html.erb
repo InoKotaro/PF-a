@@ -16,6 +16,9 @@
     <header>
     <% if user_signed_in? %>
       <li>
+        <%= render 'public/searches/search', user: @user, posts: @posts %>
+      </li>
+      <li>
         <%= link_to '投稿フォーム', new_post_path %>
       </li>
       <li>

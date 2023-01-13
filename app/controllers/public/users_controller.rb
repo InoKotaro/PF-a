@@ -1,12 +1,13 @@
 class Public::UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
-  before_action :set_user, only: [:followings, :followers]
+  before_action :set_user, only: [:followings, :followers, :favorites]
 
   def show
     @user = User.find(params[:id])
-    @posts_page = @user.posts.page(params[:page]) #特定ユーザーの全投稿を変数に格納/
-                                                  #多側を取得するのでテーブル名複数形表記
     @posts= @user.posts #特定ユーザーの投稿分のみ格納
+    @posts_page = @user.posts.page(params[:page]) #ページネーション
+
+
   end
 
   def edit
@@ -19,6 +20,12 @@ class Public::UsersController < ApplicationController
     redirect_to user_path(@user)
   end
 
+  def favorite_list
+    favorites = Favorite.where(user: current_user).pluck(:post_id)
+    @favorite_list = Post.find(favorites)
+  end
+
+  #-----------------フォロー機能↓------------------
   def followings
     user = User.find(params[:user_id])
     @users = user.followings
@@ -28,12 +35,14 @@ class Public::UsersController < ApplicationController
     user = User.find(params[:user_id])
     @users = user.followers
   end
+  #------------------------------------------------
 
   private
 
   def user_params
     params.require(:user).permit(:profile_image, :name, :introduction)
   end
+
 
   #他ユーザーのアクセス制限
   def is_matching_login_user

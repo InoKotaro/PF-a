@@ -3,8 +3,11 @@
   <h3><%= @user.name %></h3>
   <%= image_tag @user.get_profile_image(100,100) %>
   <p><%= @user.introduction %></p>
+
+  <!--------------フォローボタン↓--------------------->
   <%= link_to "#{@user.followings.count} フォロー", user_followings_path(@user) %>
   <%= link_to "#{@user.followers.count} フォロワー", user_followers_path(@user) %>
+  <!-------------------------------------------------->
 
   <% if @user == current_user %> <!--ログイン中ユーザーにだけ表示-->
     <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
@@ -15,8 +18,10 @@
   <%= render 'public/relationships/follow_btn', user: @user %>
 </div>
 
+  <% if @user == current_user %> <!--ログイン中ユーザーにだけ表示-->
+     <%= link_to "いいねした投稿", favorite_list_users_path %> <!--いいね一覧へ遷移-->
+  <% end %>
+
 <div> <!--ユーザーの投稿一覧-->
   <%= render 'public/posts/post_list', posts: @posts %>
 </div>
-
-

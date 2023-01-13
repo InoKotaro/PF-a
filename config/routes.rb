@@ -14,14 +14,16 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
-   #---------------------デバイス↑-----------------------------
+   #----------------------------------------------------------
 
   #ユーザー側ルート
   scope module: :public do
+    get "search" => "searches#search" #検索機能
     resources :users, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy] #フォロー機能ネスト化
       get 'followings' => 'relationships#followings', as: 'followings' #フォロー一覧
       get 'followers' => 'relationships#followers', as: 'followers'#フォロワー一覧
+      get :favorite_list, on: :collection  #いいね一覧
     end
     resources :posts, only: [:new, :create, :show, :destroy] do
       resources :comments, only: [:create, :destroy] #コメント機能ネスト化

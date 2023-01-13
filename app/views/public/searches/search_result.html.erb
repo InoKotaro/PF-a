@@ -1,0 +1,25 @@
+<h2>検索結果</h2>
+
+<table class="table table-hover table-inverse">
+  <!--検索対象モデルがUserの時 -->
+  <% if @range == "User" %>
+
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td> <!--ユーザー名-->
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.title %></td> <!--タイトル-->
+          <td><%= post.introduction %></td> <!--紹介文-->
+        </tr>
+      <% end %>
+    </tbody>
+
+  <% end %> <!--if文範囲終了-->
+</table>

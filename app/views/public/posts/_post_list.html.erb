@@ -15,7 +15,7 @@
   <p><%= post.created_at.strftime('%Y/%m/%d') %></p> <!--投稿日-->
   <p>スポット：<%= post.title %></p> <!--タイトル-->
   <p>紹介：<%= post.introduction %></p> <!--紹介文-->
-  <p><%= link_to "#{post.comments.count} コメント" %></p> <!--コメント数-->
-  <%= render "public/favorites/favorite", post: post %><!--いいね数-->
+  <p><%= "#{post.comments.count} コメント" %></p> <!--コメント数-->
+  <p><%= "#{post.comments.count} いいね" %></p> <!--いいね数-->
 
 <% end %>

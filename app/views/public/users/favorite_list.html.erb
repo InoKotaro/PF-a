@@ -1,0 +1,8 @@
+<p>いいねした投稿一覧</p>
+
+<% if @favorite_list.present? %>
+  <% @favorite_list.each do |list| %>
+    <%= list.user.name %>
+    <%= image_tag list.image%>
+    <% end %>
+<% end %>
