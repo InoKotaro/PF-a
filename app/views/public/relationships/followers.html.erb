@@ -1,0 +1,15 @@
+<p>フォロワー一覧</p><br/>
+<% if @users.exists? %>
+  <% @users.each do |user| %>
+
+  <p><%= link_to user_path(user) do %></p> <!--要素リンク化-->
+    <%= image_tag user.get_profile_image(100,100) %>
+    <%= user.name %>
+  <% end %>
+
+  <% end %> <!--each文範囲終了-->
+<% else %>
+  <p>ユーザーはいません</p> <!--フォロワー数０時表示-->
+
+<% end %> <!--if文範囲終了-->
+

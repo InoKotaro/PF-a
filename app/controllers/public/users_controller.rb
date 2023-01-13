@@ -1,5 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
+  before_action :set_user, only: [:followings, :followers]
 
   def show
     @user = User.find(params[:id])
@@ -16,6 +17,16 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params) #パラメータあり
     redirect_to user_path(@user)
+  end
+
+  def followings
+    user = User.find(params[:user_id])
+    @users = user.followings
+  end
+
+  def followers
+    user = User.find(params[:user_id])
+    @users = user.followers
   end
 
   private

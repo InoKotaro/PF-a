@@ -23,12 +23,12 @@ class Public::SessionsController < Devise::SessionsController
 
   #ログイン後トップページへ遷移
   def after_sign_in_path_for(resource)
-    posts_path
+    root_path
   end
 
   #ログアウト後トップページへ遷移
   def after_sign_out_path_for(resource)
-    posts_path
+    root_path
   end
 
   # If you have extra params to permit, append them to the sanitizer.

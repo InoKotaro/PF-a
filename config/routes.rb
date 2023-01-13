@@ -20,8 +20,8 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :users, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy] #フォロー機能ネスト化
-      get 'followings' => 'relationships#followings', as: 'followings'
-      get 'followers' => 'relationships#followers', as: 'followers'
+      get 'followings' => 'relationships#followings', as: 'followings' #フォロー一覧
+      get 'followers' => 'relationships#followers', as: 'followers'#フォロワー一覧
     end
     resources :posts, only: [:new, :create, :show, :destroy] do
       resources :comments, only: [:create, :destroy] #コメント機能ネスト化
