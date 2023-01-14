@@ -38,6 +38,14 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  #論理削除処理
+  def destroy
+    respond_with_navigational do #Deviceの論理削除後の後処理
+    sign_out current_user #強制ログアウト
+    redirect_to root_path #ログアウト後のページ遷移
+    end
+  end
+
   protected
 
   # If you have extra params to permit, append them to the sanitizer.

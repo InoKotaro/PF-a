@@ -1,13 +1,14 @@
 class Public::UsersController < ApplicationController
-  before_action :is_matching_login_user, only: [:edit, :update]
-  before_action :set_user, only: [:followings, :followers, :favorites]
+  before_action :is_matching_login_user, only: [:edit, :update, :destroy]
+
+  def index
+    @users = User.all
+  end
 
   def show
     @user = User.find(params[:id])
     @posts= @user.posts #特定ユーザーの投稿分のみ格納
     @posts_page = @user.posts.page(params[:page]) #ページネーション
-
-
   end
 
   def edit
@@ -20,6 +21,7 @@ class Public::UsersController < ApplicationController
     redirect_to user_path(@user)
   end
 
+  #いいね一覧
   def favorite_list
     favorites = Favorite.where(user: current_user).pluck(:post_id)
     @favorite_list = Post.find(favorites)
@@ -43,13 +45,16 @@ class Public::UsersController < ApplicationController
     params.require(:user).permit(:profile_image, :name, :introduction)
   end
 
-
   #他ユーザーのアクセス制限
   def is_matching_login_user
     user_id = params[:id].to_i
     unless user_id == current_user.id
       redirect_to posts_path
     end
+  end
+
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
   end
 
 end

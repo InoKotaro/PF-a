@@ -60,12 +60,11 @@ class User < ApplicationRecord
       @user = User.all
     end
   end
+  #----------------------------------------------------------------------------------
 
-  
-  #------------------検索機能-----searchesコントローラで使うメソッド↑-----------------
-
-
-
-
+  #退会済みユーザーログイン制限
+  def active_for_authentication?
+    super && (is_valid == true)
+  end
 
 end
