@@ -2,6 +2,6 @@
 <%= form_with model: [post, comment] do |f| %>
 
   <%= f.text_area :comment, rows: '3', placeholder: "コメントをここに" %>
-  <%= f.submit "送信する" %>
+<%= f.submit "送信する" %>
 
 <% end %>

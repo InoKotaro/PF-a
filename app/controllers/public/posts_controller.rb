@@ -37,10 +37,9 @@ class Public::PostsController < ApplicationController
   #他ユーザーのアクセス制限
   def is_matching_login_user
     post_id = params[:id].to_i
-    unless user_id == current_user.id
+    unless Post.find(post_id).user_id == current_user.id
       redirect_to root_path
     end
   end
 
 end
-

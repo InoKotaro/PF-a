@@ -6,7 +6,7 @@ class Public::CommentsController < ApplicationController
     comment.user_id = current_user.id #外部キー(user_id)指定
     comment.post_id = post.id #外部キー(post_id)指定
     comment.save
-    redirect_to post_path(current_user)
+    redirect_to post_path(post)
   end
 
   def destroy
