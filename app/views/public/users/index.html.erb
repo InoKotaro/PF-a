@@ -1,6 +1,9 @@
+<h1>管理者専用ページ</h1>
 <% @users.each do |user| %>
-  <%= link_to user.name, user %>
-    <% if current_user.admin? && !current_user?(user) %>
-      <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
-    <% end %>
+<p><%= user.name %></p>
+    =>
+<%= link_to "強制削除", user, method: :delete, data: { confirm: "【注意】管理者権限で削除しますか？" } %>
+<%= link_to "強制削除", user_withdraw_user_path(user.id), method: :patch, data: { confilm: "【注意】管理者権限で削除しますか？" } %>
+  </div>
 <% end %>
+

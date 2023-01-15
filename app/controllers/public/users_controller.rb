@@ -1,5 +1,6 @@
 class Public::UsersController < ApplicationController
-  before_action :is_matching_login_user, only: [:edit, :update, :destroy]
+  before_action :is_matching_login_user, only: [:edit, :update, :destroy] #ログイン中のみアクセス可能ページ
+  before_action :is_matching_admin_user, only: [:index] #管理者のみアクセス可能ページ
 
   def index
     @users = User.all
@@ -39,17 +40,35 @@ class Public::UsersController < ApplicationController
   end
   #------------------------------------------------
 
+  def unsubscribe #退会画面
+    @user = current_user
+  end
+
+  def withdraw #退会処理
+    @user = User.find(params[:user_id])
+    @user.update(is_valid: false) #falseに変更して退会済扱いにする
+    reset_session
+    redirect_to root_path, alert: "ご利用ありがとうございました。"
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:profile_image, :name, :introduction)
   end
 
-  #他ユーザーのアクセス制限
+  #ログイン中ユーザー判別
   def is_matching_login_user
     user_id = params[:id].to_i
     unless user_id == current_user.id
-      redirect_to posts_path
+      redirect_to root_path
+    end
+  end
+
+  #管理者判別
+  def is_matching_admin_user
+    unless admin_signed_in?
+      redirect_to root_path
     end
   end
 

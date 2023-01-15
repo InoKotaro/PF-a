@@ -16,6 +16,9 @@
     <header>
     <% if user_signed_in? %>
       <li>
+        <%= current_user.name %> さん、こんにちは！
+      </li>
+      <li>
         <%= render 'public/searches/search', user: @user, posts: @posts %>
       </li>
       <li>
@@ -27,6 +30,9 @@
       <li>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </li>
+    <% elsif admin_signed_in? %>
+      <li>
+        <%= link_to '管理者ログアウト', destroy_admin_session_path, method: :delete %>
     <% else %>
       <li>
         <%= link_to "新規登録", new_user_registration_path %>
@@ -34,6 +40,7 @@
       <li>
         <%= link_to "ログイン", new_user_session_path %>
       </li>
+
     <% end %>
   </header>
   <%= yield %>

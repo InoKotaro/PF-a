@@ -20,22 +20,29 @@ Rails.application.routes.draw do
   scope module: :public do
 
     get "search" => "searches#search" #検索機能
+
+
     resources :users, only: [:index, :show, :edit, :update] do
+      #いいね一覧
+      get :favorite_list, on: :collection
+
+      #アカウント削除
+      get "unsubscribe" => "users#unsubscribe", as: "confirm_unsubscribe" #論理削除
+      patch "withdraw" => "users#withdraw", as: "withdraw_user" #論理削除
+
+      #フォロー
       resource :relationships, only: [:create, :destroy] #フォロー機能ネスト化
-      get 'followings' => 'relationships#followings', as: 'followings' #フォロー一覧
-      get 'followers' => 'relationships#followers', as: 'followers'#フォロワー一覧
-      get :favorite_list, on: :collection  #いいね一覧
-      get "unsubscribe/:name" => "homes#unsubscribe", as: "confirm_unsubscribe" #論理削除
-      patch ":id/withdraw/:name" => "homes#withdraw", as: "withdraw_user" #論理削除
-      put "withdraw/:name" => "users#withdraw" #論理削除
+        get 'followings' => 'relationships#followings', as: 'followings' #フォロー一覧
+        get 'followers' => 'relationships#followers', as: 'followers'#フォロワー一覧
+    end #users範囲終了
 
-    end
-
+    #投稿
     resources :posts, only: [:new, :create, :show, :destroy] do
       resources :comments, only: [:create, :destroy] #コメント機能ネスト化
       resource :favorites, only: [:create, :destroy] #いいね機能ネスト化
-    end
-  end
+    end #posts範囲終了
+
+  end #public範囲終了
 
   #管理者側ルート
   namespace :admin do

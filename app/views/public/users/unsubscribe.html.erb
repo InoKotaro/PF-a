@@ -5,6 +5,6 @@
   </div>
   <div>
     <%= link_to '退会しない', root_path %>
-    <%= link_to "退会する", withdrawal_path, method: :patch, data: { confilm: "本当に退会しますか？" }>
+    <%= link_to "退会する", user_withdraw_user_path(@user.id), method: :patch, data: { confilm: "本当に退会しますか？" } %>
   </div>
 </div>

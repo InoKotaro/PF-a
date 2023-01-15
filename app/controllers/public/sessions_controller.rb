@@ -34,7 +34,7 @@ class Public::SessionsController < Devise::SessionsController
     def reject_user
     @user = User.find_by(email: params[:user][:email])
       if @user
-        if @user.valid_password?(params[:user][:password]) &&  (@user.active_for_authentication? == true)
+        unless @user.valid_password?(params[:user][:password]) &&  (@user.active_for_authentication? == true)
           redirect_to new_user_registration_path
         end
       end
