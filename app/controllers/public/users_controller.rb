@@ -1,6 +1,7 @@
 class Public::UsersController < ApplicationController
-  before_action :is_matching_login_user, only: [:edit, :update, :destroy] #ログイン中のみアクセス可能ページ
+  before_action :is_matching_login_user, only: [:edit, :update, :destroy] #ログイン中ユーザーのみアクセス可能ページ
   before_action :is_matching_admin_user, only: [:index] #管理者のみアクセス可能ページ
+  before_action :ensure_guest_user, only: [:edit] #ゲストログインユーザーはユーザー編集ページへアクセス不可
 
   def index
     @users = User.all
@@ -69,6 +70,14 @@ class Public::UsersController < ApplicationController
   def is_matching_admin_user
     unless admin_signed_in?
       redirect_to root_path
+    end
+  end
+
+  #ゲストログインユーザー判別
+  def ensure_guest_user
+    @user = User.find(params[:id])
+    if @user.name == "guestuser"
+      redirect_to user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
   end
 

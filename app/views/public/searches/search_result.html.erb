@@ -8,6 +8,7 @@
       <% @users.each do |user| %>
         <tr>
           <td><%= user.name %></td> <!--ユーザー名-->
+          <%= image_tag user.get_profile_image(100,100) %>
         </tr>
       <% end %>
     </tbody>
@@ -15,6 +16,7 @@
     <tbody>
       <% @posts.each do |post| %>
         <tr>
+          <%= image_tag post.get_image(200,200) %>
           <td><%= post.title %></td> <!--タイトル-->
           <td><%= post.introduction %></td> <!--紹介文-->
         </tr>

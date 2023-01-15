@@ -14,20 +14,19 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed #一覧で使用
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy #中間テーブル
   has_many :followers, through: :reverse_of_relationships, source: :follower #一覧で使用
-  #--------------------------------フォロー機能アソシエーション↑-------------------------------------
+  #--------------------------------------------------------------------------------------------------
 
-  #名前,自己紹介文バリデーション 文字数指定あり
+  #ユーザー名,自己紹介文バリデーション 文字数指定あり
   validates :name, length: { minimum: 2, maximum: 15 }, presence: true, uniqueness: true
   validates :introduction, length: { maximum: 30 }
 
   #プロフィール画像サイズ処理
   def get_profile_image(width, height)
-    if profile_image.attached?
-      profile_image.variant(resize_to_limit: [width, height]).processed #設定後はユーザー指定の画像適用
-    else
+    if profile_image.attached? == false
       file_path = Rails.root.join('app/assets/images/sample_image.jpg') #デフォルト画像
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
+    profile_image.variant(resize_to_limit: [width, height]).processed #設定後はユーザー指定の画像適用
   end
 
   #----------------フォロー機能---relationshipsコントローラで使うメソッド↓------------
@@ -43,7 +42,7 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
-  #----------------フォロー機能---relationshipsコントローラで使うメソッド↑------------
+  #-----------------------------------------------------------------------------------
 
   #------------------検索機能-----searchesコントローラで使うメソッド↓-----------------
   #ユーザー名検索
@@ -65,6 +64,23 @@ class User < ApplicationRecord
   #退会済みユーザーログイン制限
   def active_for_authentication?
     super && (is_valid == true)
+  end
+
+  #ゲストログイン機能
+  def self.guest
+    find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+    end
+  end
+
+  def is_guest?
+    self.name == "guestuser"
+  end
+
+
+  def test
+    puts "static"
   end
 
 end

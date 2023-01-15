@@ -9,19 +9,23 @@
   <%= link_to "#{@user.followers.count} フォロワー", user_followers_path(@user) %>
   <!-------------------------------------------------->
 
-  <% if @user == current_user %> <!--ログイン中ユーザーにだけ表示-->
+  <!--ログイン中ユーザーにだけ表示 && ゲストログインユーザーは非表示-->
+  <% if @user == current_user && @user.is_guest? == false %>
     <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
   <% end %>
 </div>
 
-<div> <!--フォロー機能-->
+<!--フォロー機能-->
+<div>
   <%= render 'public/relationships/follow_btn', user: @user %>
 </div>
 
-  <% if @user == current_user %> <!--ログイン中ユーザーにだけ表示-->
-     <%= link_to "いいねした投稿", favorite_list_users_path %> <!--いいね一覧へ遷移-->
-  <% end %>
+<!--ログイン中ユーザーにだけ表示-->
+<% if @user == current_user %>
+   <%= link_to "いいねした投稿", favorite_list_users_path %> <!--いいね一覧へ遷移-->
+<% end %>
 
-<div> <!--ユーザーの投稿一覧-->
+ <!--ユーザーの投稿一覧-->
+<div>
   <%= render 'public/posts/post_list', posts: @posts %>
 </div>
