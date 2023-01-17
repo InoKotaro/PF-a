@@ -16,7 +16,7 @@
     <tbody>
       <% @posts.each do |post| %>
         <tr>
-          <%= image_tag post.get_image(200,200) %>
+          <%= image_tag post.get_image %>
           <td><%= post.title %></td> <!--タイトル-->
           <td><%= post.introduction %></td> <!--紹介文-->
         </tr>
