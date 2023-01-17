@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
+/*アプリケーション全体に適用↓*/
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover{
+  color : #ff7043;
+}

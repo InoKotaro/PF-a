@@ -41,11 +41,13 @@ class Public::UsersController < ApplicationController
   end
   #------------------------------------------------
 
-  def unsubscribe #退会画面
+  #退会画面
+  def unsubscribe
     @user = current_user
   end
 
-  def withdraw #退会処理
+  #退会処理
+  def withdraw
     @user = User.find(params[:user_id])
     @user.update(is_valid: false) #falseに変更して退会済扱いにする
     reset_session

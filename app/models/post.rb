@@ -10,15 +10,13 @@ class Post < ApplicationRecord
   validates :title, length: { minimum: 1, maximum: 15 }, presence: true, uniqueness: true
   validates :introduction, length: { minimum: 1, maximum: 200 }, presence: true, uniqueness: true
 
-
   #投稿時写真有無判断
   def get_image
-    if image.attached?
-      image
-    else
+    unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
+      image
   end
 
   #いいね機能で使用

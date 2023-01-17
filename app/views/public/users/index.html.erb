@@ -1,13 +1,16 @@
 <h1>管理者専用ページ</h1>
 <% @users.each do |user| %>
+
   <p><%= user.name %></p>
       =>
   <%= link_to "強制削除", user_withdraw_user_path(user), method: :patch, data: { confilm: "【注意】管理者権限で削除しますか？" } %>
 
+  <!--ユーザーアカウントステータス-->
   <% if user.is_valid %>
-      <strong class="text-secondary">有効</strong>
+      <strong class="text-secondary">稼働中</strong> <!--使用可能-->
     <% else %>
-      <strong class="text-success">退会</strong>
+      <strong class="text-success">停止中</strong> <!--使用停止-->
   <% end %>
+
 <% end %>
 

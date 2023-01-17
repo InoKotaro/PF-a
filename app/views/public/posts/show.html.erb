@@ -1,4 +1,5 @@
 <div>
+
   <!--投稿詳細-->
   <%= image_tag @post.user.get_profile_image(100,100) %> <!--ユーザーアイコン-->
   <%= @post.user.name %></p> <!--名前-->
@@ -7,19 +8,24 @@
   <p><%= @post.introduction %></p> <!--紹介文-->
   <p><%= "#{@post.comments.count} コメント" %></p> <!--コメント数-->
 
-  <% if @post.user == current_user %> <!--投稿者とログイン中ユーザーが一致した場合のみ削除ボタン表示-->
+  <!--投稿者とログイン中ユーザーが一致した場合のみ削除ボタン表示-->
+  <% if @post.user == current_user %>
     <%= link_to "削除", post_path(@post), method: :delete %>
   <% end %>
 
   <!--いいね機能テンプレート化-->
-  <%= render 'public/favorites/favorite', post: @post %>
-</div>
+  <td id = "favorite_buttons<%= @post.id %>">
+    <%= render 'public/favorites/favorite', post: @post %>
+  </div>
 
-<div> <!--コメント投稿フォーム-->
-  <%= render 'public/comments/comment_form', post: @post, comment: @comment %>
-</div>
+  <!--コメント投稿フォーム-->
+  <div>
+    <%= render 'public/comments/comment_form', post: @post, comment: @comment %>
+  </div>
 
-<div> <!--コメント一覧-->
-  <%= render 'public/comments/comment_list', post: @post %>
-</div>
+  <!--コメント一覧-->
+  <div>
+    <%= render 'public/comments/comment_list', post: @post %>
+  </div>
 
+</div>

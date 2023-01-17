@@ -1,5 +1,44 @@
-<%= render 'public/posts/post_list', posts: @posts %>
+<div class = "container">
+   <div class="row">
 
-<!--ページネーション-->
-<%= paginate @posts_page %>
+    <!--検索フォーム-->
+    <p><%= render 'public/searches/search', user: @user, posts: @posts %></p>
+
+    <% @posts.each do |post| %>
+
+      <div class="col-md-4">
+        <div class = "card m-3 ">
+          <div class = "card-body">
+
+              <div clsss = "post">
+                <%= link_to user_path(post.user) do %> <!--画像リンク化-->
+                  <%= image_tag post.user.get_profile_image(100,100), class: 'frofile_image' %><!--ユーザーアイコン-->
+                  &nbsp;<!--空白-->
+                  <%= post.user.name %> <!--名前-->
+                <% end %>
+
+                <%= link_to post_path(post.id) do %> <!--画像リンク化-->
+                  <p><%= image_tag post.get_image, class: 'post_image' %></p>
+                  <span class = "content">
+                    <h5 class = "card-title">
+                    <%= post.title %></h5>
+                    <%= "#{post.comments.count} コメント" %>
+                    &nbsp;<!--空白-->
+                    <%= "#{post.favorites.count} いいね" %>
+                  </span>
+                <% end %>
+              </div> <!--post閉じ-->
+
+          </div> <!--card-body閉じ-->
+        </div>　<!--card m-3閉じ-->
+      </div> <!--ccol-md-4-->
+
+    <%end%> <!--each閉じ-->
+  </div> <!--row閉じ-->
+</div> <!--row閉じ-->
+
+  <!--ページネーション-->
+<%= paginate @posts_page, class: "page_nation"  %>
+
+
 

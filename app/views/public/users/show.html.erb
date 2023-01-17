@@ -4,12 +4,12 @@
   <%= image_tag @user.get_profile_image(100,100) %>
   <p><%= @user.introduction %></p>
 
-  <!--------------フォローボタン↓--------------------->
+  <!---------------フォロー,フォロワー一覧リンク↓---------------->
   <%= link_to "#{@user.followings.count} フォロー", user_followings_path(@user) %>
   <%= link_to "#{@user.followers.count} フォロワー", user_followers_path(@user) %>
-  <!-------------------------------------------------->
+  <!------------------------------------------------------------->
 
-  <!--ログイン中ユーザーにだけ表示 && ゲストログインユーザーは非表示-->
+  <!--ログイン中ユーザーがtrue &&(且つ) ゲストログインユーザーがfalseで表示-->
   <% if @user == current_user && @user.is_guest? == false %>
     <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
   <% end %>
@@ -29,3 +29,6 @@
 <div>
   <%= render 'public/posts/post_list', posts: @posts %>
 </div>
+
+<!--ページネーション-->
+<%= paginate @posts_page %>

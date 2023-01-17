@@ -22,7 +22,7 @@ class User < ApplicationRecord
 
   #プロフィール画像サイズ処理
   def get_profile_image(width, height)
-    if profile_image.attached? == false
+    if profile_image.attached? == false #
       file_path = Rails.root.join('app/assets/images/sample_image.jpg') #デフォルト画像
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
@@ -68,19 +68,15 @@ class User < ApplicationRecord
 
   #ゲストログイン機能
   def self.guest
-    find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
+    find_or_create_by!(name: 'guestusere' ,email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
-      user.name = "guestuser"
+      user.name = "ゲスト"
     end
   end
 
+  #users/showで使用メソッド
   def is_guest?
     self.name == "guestuser"
-  end
-
-
-  def test
-    puts "static"
   end
 
 end
