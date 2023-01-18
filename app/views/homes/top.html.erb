@@ -1,14 +1,10 @@
 <div class = "container">
-  <div class="row">
-
-    <!--検索フォーム-->
-    <p><%= render 'public/searches/search', user: @user, posts: @posts %></p>
-
-    <% @posts_page.each do |post| %>
+  <div class = "row">
+    <% @posts.each do |post| %>
 
       <div class="col-md-4">
-        <div class = "card m-3 ">
-          <div class = "card-body">
+        <div class = "card h-90">
+          <div class = "card-body ">
 
               <div clsss = "post">
                 <%= link_to user_path(post.user) do %> <!--画像リンク化-->
@@ -19,23 +15,23 @@
 
                 <%= link_to post_path(post.id) do %> <!--画像リンク化-->
                   <p><%= image_tag post.get_image, class: 'post_image' %></p>
-                  <span class = "content">
-                    <h5 class = "card-title">
-                    <%= post.title %></h5>
+                  <div class = "content">
                     <%= "#{post.comments.count} コメント" %>
                     &nbsp;<!--空白-->
                     <%= "#{post.favorites.count} いいね" %>
-                  </span>
+                    &nbsp;<!--空白-->
+                    <%= post.created_at.strftime('%Y/%m/%d') %><!--投稿日-->
+                  </div>
                 <% end %>
               </div> <!--post閉じ-->
 
           </div> <!--card-body閉じ-->
         </div>　<!--card m-3閉じ-->
-      </div> <!--ccol-md-4-->
+      </div> <!--ccol-md-4閉じ-->
 
-    <%end%> <!--each閉じ-->
+    <%end%> <!--each文閉じ-->
   </div> <!--row閉じ-->
-</div> <!--row閉じ-->
+</div> <!--container閉じ-->
 
   <!--ページネーション-->
-<%= paginate @posts_page, class: 'enter-block'%>
+<%= paginate @posts, class: 'enter-block'%>

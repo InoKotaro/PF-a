@@ -22,7 +22,15 @@ a {
 }
 
 a:hover{
-  color : #ff7043;
+  color: #ff7043;
+}
+
+.navbar{
+  margin-bottom: 30px;
+}
+
+.rails_company{
+  padding: 0 0 0 1em;
 }
 
 .pagination {
@@ -30,5 +38,5 @@ a:hover{
 }
 
 .pagination span{
-   padding:10px;  
+   padding:10px;
 }

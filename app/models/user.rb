@@ -22,7 +22,7 @@ class User < ApplicationRecord
 
   #プロフィール画像サイズ処理
   def get_profile_image(width, height)
-    if profile_image.attached? == false #
+    if profile_image.attached? == false #deviseが画像無い時はfalse扱いのため
       file_path = Rails.root.join('app/assets/images/sample_image.jpg') #デフォルト画像
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
