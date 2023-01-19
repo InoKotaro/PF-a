@@ -14,7 +14,36 @@
  *= require_self
  */
 
-/*アプリケーション全体に適用↓*/
+//ヘッダー
+.nav-link{
+    margin: 7px;
+}
+
+.dropdown-menu{
+  width: auto;
+  height: 300px;
+  position: center;
+  overflow:scroll;
+  overflow-x: hidden;
+}
+
+.dropdown-item:hover{
+ background-color: #eaf4ff;
+}
+
+.rails_company{
+  padding: 0 0 0 1em;
+  pointer-events:none;
+}
+
+.navbar-brand{
+  padding: 0 0 0 7%;
+}
+
+//フォント
+main{
+  padding-top: 70px;
+}
 
 a {
   text-decoration: none;
@@ -25,15 +54,13 @@ a:hover{
   color: #ff7043;
 }
 
-.navbar{
-  margin-bottom: 30px;
+
+//検索フォーム
+.search_form{
+  margin: 1em 0 1em 0;
 }
 
-.rails_company{
-  padding: 0 0 0 1em;
-  pointer-events:none;
-}
-
+//ページネーション
 .pagination {
   place-content:center
 }

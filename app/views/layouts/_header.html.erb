@@ -1,40 +1,23 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class = "container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div class = "container-fluid">
 
-    <ul class="navbar-nav">
-      <a><%= link_to 'ロゴ', root_path, class: "navbar-brand" %></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </ul>
+    <a><%= link_to 'ロゴ', root_path, class: "navbar-brand" %></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-<ul class="navbar-nav ml-auto mb-2 mb-lg-0 ">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-
+      <ul class="navbar-nav ms-auto me-3">
         <% if user_signed_in? %>
 
-          <span class="d-flex align-items-center">
+          <li class="d-flex align-items-center">
             <%= current_user.name %> さん、こんにちは！
-          </span>
-
+          </li>
           <li class="nav-item">
             <%= link_to 'トップ', root_path, class: 'nav-link text-center border rounded'%>
           </li>
           <li class="nav-item">
             <%= link_to '投稿フォーム', new_post_path, class: 'nav-link text-center border rounded'%>
-          </li>
-
-          <!--検索フォーム ドロップダウン式-->
-          <li class="nav-item dropdown">
-            <a class="nav-link text-center dropdown-toggle border rounded" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <span>検索</span>
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item">
-                <p><%= render 'public/searches/search', user: @user, posts: @posts %></p>
-              </a></li>
-            </ul>
           </li>
 
           <!--天気-->
@@ -44,7 +27,7 @@
 
           <!--鉄道情報 ドロップダウン式-->
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-center border rounded" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle text-center border rounded" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <span>鉄道情報</span>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -60,7 +43,7 @@
               <li><hr class="dropdown-divider"></li>
               <li><a class = "rails_company">東急</a></li>
                 <li><a class="dropdown-item text-center" href="https://transit.yahoo.co.jp/diainfo/112/0" target="_blank" rel="noopener noreferrer">東横線</a></li>
-                <li><a class="dropdown-item text-center" href="https://transit.yahoo.co.jp/diainfo/114/0" target="_blank" rel="noopener noreferrer"田園都市線</a></li>
+                <li><a class="dropdown-item text-center" href="https://transit.yahoo.co.jp/diainfo/114/0" target="_blank" rel="noopener noreferrer">田園都市線</a></li>
                 <li><hr class="dropdown-divider"></li>
               <li><a class = "rails_company">京王</a></li>
                 <li><a class="dropdown-item text-center" href="https://transit.yahoo.co.jp/diainfo/108/0" target="_blank" rel="noopener noreferrer">井の頭線</a></li>
@@ -88,10 +71,8 @@
           </li>
 
         <% end %> <!--if文閉じ-->
-
-
-
+      </ul> <!--navbar-nav閉じ-->
     </div> <!--collapse閉じ-->
-    </ul> <!--navbar-nav閉じ-->
-  </div> <!--container閉じ-->
+
+  </div> <!--container-fluid閉じ-->
 </nav> <!--navbar閉じ-->
