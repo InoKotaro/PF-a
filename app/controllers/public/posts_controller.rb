@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-  before_action :is_matching_login_user, only: [:destroy]
+  before_action :is_matching_login_user, only: [:show, :destroy]
 
   #index機能はhomes/topを使用
 
@@ -37,7 +37,7 @@ class Public::PostsController < ApplicationController
   #他ユーザーのアクセス制限
   def is_matching_login_user
     post_id = params[:id].to_i
-    unless Post.find(post_id).user_id == current_user.id
+    unless Post.find(post_id).user == current_user
       redirect_to root_path
     end
   end

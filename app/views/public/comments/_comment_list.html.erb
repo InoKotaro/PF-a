@@ -7,7 +7,7 @@
     <p><%= comment.comment %></p>
 
     <% if comment.user == current_user %> <!--コメント者とログイン中ユーザーが一致した場合のみ削除ボタン表示-->
-      <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
+      <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true, data: {confirm: "コメントを削除します"}  %>
     <% end %>
 
 <% end %>
