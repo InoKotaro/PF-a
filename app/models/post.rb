@@ -7,7 +7,7 @@ class Post < ApplicationRecord
 
   #バリデーション 文字数指定あり
   validates :image, presence: true
-  validates :title, length: { minimum: 1, maximum: 15 }, presence: true, uniqueness: true
+  validates :title, length: { minimum: 1, maximum: 15}, presence: true, uniqueness: true
   validates :introduction, length: { minimum: 1, maximum: 200 }, presence: true, uniqueness: true
 
   #投稿時写真有無判断

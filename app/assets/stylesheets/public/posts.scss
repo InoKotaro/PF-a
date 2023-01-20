@@ -1,3 +1,82 @@
 // Place all the styles related to the public/posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.posts{ //css個別指定
+
+//card
+.frofile_image{
+    margin: 10px 10px;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+}
+
+.frofile_image:hover {
+    opacity: 0.6;
+}
+
+.post_image{
+    width: 100%;
+    aspect-ratio: 5 / 3;
+    border-radius: 10px;
+}
+
+.content{
+    text-align: center;
+}
+
+.text{
+  padding: 5% 7% 0 7%;
+}
+
+.title{
+  padding: 0 12% 3% 12%;
+  text-align: center;
+  border-bottom:1px solid;
+  width: 100%;
+}
+
+.introduction{
+  padding-top: 3%;
+  font-size: 22px;
+}
+
+.date_time{
+  margin: 2% 5% 2% 77%;
+  white-space:nowrap;
+}
+
+.user_reaction{
+  width: 100%;
+  padding: 0 0 3% 7%;
+}
+
+.post_delete{
+  padding: 0 0 3% 90%;
+  width: 100%;
+  border-bottom: 1px solid;
+}
+
+//コメント
+.card{
+  margin: 3% 2% 3% 2%;
+}
+
+.comment_contents{
+  margin-top: 3%;
+  text-align: center;
+}
+
+.comment_wrap{
+  margin: auto;
+  width: 35%;
+  word-wrap: break-word;
+  text-align: left;
+}
+
+.text_area{
+  width: 70%;
+}
+
+} //css個別指定範囲終了

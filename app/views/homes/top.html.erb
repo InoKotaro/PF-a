@@ -1,26 +1,25 @@
 <div class = "container">
   <div class = "row">
 
-    <div class = "search_form">
+    <div class = "search_form">あとでアイコン化
       <%= render 'public/searches/search', user: @user, posts: @posts, class: "text-center" %>
     </div>
-    
+
     <% @posts.each do |post| %>
 
       <div class="col-md-4">
         <div class = "card h-90">
           <div class = "card-body ">
 
-              <div clsss = "post">
                 <%= link_to user_path(post.user) do %> <!--画像リンク化-->
                   <%= image_tag post.user.get_profile_image(100,100), class: 'frofile_image' %><!--ユーザーアイコン-->
                   &nbsp;<!--空白-->
                   <%= post.user.name %> <!--名前-->
                 <% end %>
 
-                <%= link_to post_path(post.id) do %> <!--画像リンク化-->
+                <%= link_to post_path(post) do %> <!--画像リンク化-->
                   <p><%= image_tag post.get_image, class: 'post_image' %></p>
-                  <div class = "content">
+                  <div class = "user_reaciton">
                     <%= "#{post.comments.count} コメント" %>
                     &nbsp;<!--空白-->
                     <%= "#{post.favorites.count} いいね" %>
@@ -28,7 +27,6 @@
                     <%= post.created_at.strftime('%Y/%m/%d') %><!--投稿日-->
                   </div>
                 <% end %>
-              </div> <!--post閉じ-->
 
           </div> <!--card-body閉じ-->
         </div>　<!--card m-3閉じ-->

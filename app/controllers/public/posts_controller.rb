@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-  before_action :is_matching_login_user, only: [:show, :destroy]
+  before_action :is_matching_login_user, only: [:destroy]
 
   #index機能はhomes/topを使用
 

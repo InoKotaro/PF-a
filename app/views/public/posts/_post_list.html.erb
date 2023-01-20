@@ -1,25 +1,40 @@
-<!--3行目「posts」部分が元インスタンス変数-->
+<div class = "container">
+  <div class = "row">
 
-<% posts.each do |post| %>
+    <div class = "search_form">あとでアイコン化
+      <%= render 'public/searches/search', user: @user, posts: @posts, class: "text-center" %>
+    </div>
 
-  <div id = "user_image">
-    <p><%= link_to user_path(post.user) do %></p> <!--画像リンク化-->
-      <%= image_tag post.user.get_profile_image(100,100) %><!--ユーザーアイコン-->
-    <% end %>
-  </div>
+    <% @posts.each do |post| %>
 
-  <p><%= post.user.name %></p> <!--名前-->
+      <div class="col-md-4">
+        <div class = "card h-90">
+          <div class = "card-body ">
 
-  <div id = "post_image">
-    <p><%= link_to post_path(post.id) do %></p> <!--画像リンク化-->
-      <%= image_tag post.get_image %> <!--投稿画像-->
-    <% end %>
-  </div>
+                <%= link_to user_path(post.user) do %> <!--画像リンク化-->
+                  <%= image_tag post.user.get_profile_image(100,100), class: 'frofile_image' %><!--ユーザーアイコン-->
+                  &nbsp;<!--空白-->
+                  <%= post.user.name %> <!--名前-->
+                <% end %>
 
-  <p><%= post.created_at.strftime('%Y/%m/%d') %></p> <!--投稿日-->
-  <p>スポット：<%= post.title %></p> <!--タイトル-->
-  <p>紹介：<%= post.introduction %></p> <!--紹介文-->
-  <p><%= "#{post.comments.count} コメント" %></p> <!--コメント数-->
-  <p><%= "#{post.comments.count} いいね" %></p> <!--いいね数-->
+                <%= link_to post_path(post.id) do %> <!--画像リンク化-->
+                  <p><%= image_tag post.get_image, class: 'post_image' %></p>
+                  <div class = "user_reaciton">
+                    <%= "#{post.comments.count} コメント" %>
+                    &nbsp;<!--空白-->
+                    <%= "#{post.favorites.count} いいね" %>
+                    &nbsp;<!--空白-->
+                    <%= post.created_at.strftime('%Y/%m/%d') %><!--投稿日-->
+                  </div>
+                <% end %>
 
-<% end %>
+          </div> <!--card-body閉じ-->
+        </div>　<!--card m-3閉じ-->
+      </div> <!--ccol-md-4閉じ-->
+
+    <%end%> <!--each文閉じ-->
+  </div> <!--row閉じ-->
+</div> <!--container閉じ-->
+
+  <!--ページネーション-->
+<%= paginate @posts, class: 'enter-block'%>

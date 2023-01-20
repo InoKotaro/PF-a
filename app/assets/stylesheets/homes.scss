@@ -1,6 +1,7 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.homes{ //css個別指定
 
 //card
 .frofile_image{
@@ -25,7 +26,7 @@
     opacity: 0.6;
 }
 
-.content{
+.user_reaction{
     text-align: center;
 }
 
@@ -33,3 +34,5 @@
 .page_nation{
     text-align: center;
 }
+
+} //css個別指定範囲終了

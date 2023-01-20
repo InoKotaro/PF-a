@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-  before_action :is_matching_login_user, only: [:index, :show, :edit, :update, :destroy] #ログイン中ユーザーのみアクセス可能ページ
+  before_action :is_matching_login_user, only: [:indexzs, :edit, :update, :destroy] #ログイン中ユーザーのみアクセス可能ページ
   before_action :is_matching_admin_user, only: [:index] #管理者のみアクセス可能ページ
   before_action :ensure_guest_user, only: [:edit] #ゲストログインユーザーはユーザー編集ページへアクセス不可
 
@@ -10,7 +10,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts= @user.posts #特定ユーザーの投稿分のみ格納
-    @posts_page = @user.posts.page(params[:page]) #ページネーション
+    @posts = @user.posts.page(params[:page]) #ページネーション
   end
 
   def edit

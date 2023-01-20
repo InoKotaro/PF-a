@@ -1,36 +1,49 @@
-<div class = "container">
-  <div class ="row">
-    <div class ="col">
+<div class = "container-lg w-75">
+  <div class = "row">
+    <div class = "col">
 
       <div class = "card">
           <div class = "card-body">
 
             <!--投稿詳細-->
-            <%= image_tag @post.user.get_profile_image(100,100) %> <!--ユーザーアイコン-->
-            <%= @post.user.name %></p> <!--名前-->
-            <%= image_tag @post.get_image %> <!--投稿画像表示-->
-            <p><%= @post.title %></p> <!--タイトル-->
-            <p><%= @post.introduction %></p> <!--紹介文-->
-            <p id = "comment_count"><%= "#{@post.comments.count} コメント" %></p> <!--コメント数-->
-
-            <!--投稿者とログイン中ユーザーが一致した場合のみ削除ボタン表示-->
-            <% if @post.user == current_user %>
-              <%= link_to "削除", post_path(@post), method: :delete %>
+            <%= link_to user_path(@post.user) do %> <!--画像リンク化-->
+              <%= image_tag @post.user.get_profile_image(100,100), class: 'frofile_image' %><!--ユーザーアイコン-->
+              &nbsp;<!--空白-->
+              <%= @post.user.name %> <!--名前-->
             <% end %>
+            <%= image_tag @post.get_image, class: 'post_image'%> <!--投稿画像表示-->
+            <div class = "text">
+              <h2 class = "title"><%= @post.title %></h2> <!--タイトル-->
+              <p class = "introduction"><%= @post.introduction %></p> <!--紹介文-->
+            </div>
+            <div class = "date_time">
+              <%= @post.created_at.strftime('%Y/%m/%d %H:%M') %><!--投稿日-->
+            </div>
 
-            <!--いいね機能テンプレート化-->
-            <div id = "favorite_buttons">
+            <div class = "user_reaction">
+              <!--いいね機能テンプレート化-->
               <%= render 'public/favorites/favorite', post: @post %>
+              <!--コメント数-->
+              <%= "#{@post.comments.count} コメント" %>
             </div>
 
-            <!--コメント投稿フォーム-->
-            <div id = "comment_form">
-              <%= render 'public/comments/comment_form', post: @post, comment: @comment %>
+            <div class = "post_delete">
+              <!--投稿者とログイン中ユーザーが一致した場合のみ削除ボタン表示-->
+              <% if @post.user == current_user %>
+                <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "削除しますか？"} %>
+              <% end %>
             </div>
 
-            <!--コメント一覧-->
-            <div id = "comment_list">
-              <%= render 'public/comments/comment_list', post: @post %>
+            <div class = "comment_contents">
+              <!--コメント投稿フォーム-->
+              <div id = "comment_form">
+                <%= render 'public/comments/comment_form', post: @post, comment: @comment %>
+              </div>
+
+              <!--コメント一覧-->
+              <div id = "comment_list">
+                <%= render 'public/comments/comment_list', post: @post %>
+              </div>
             </div>
 
           </div><!--card-body閉じ-->
@@ -39,3 +52,4 @@
     </div><!--col閉じ-->
   </div><!--row閉じ-->
 </div> <!--container閉じ-->
+
