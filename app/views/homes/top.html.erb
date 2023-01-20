@@ -17,7 +17,7 @@
                   <%= post.user.name %> <!--名前-->
                 <% end %>
 
-                <%= link_to post_path(post) do %> <!--画像リンク化-->
+                <%= link_to post_path(post.id) do %> <!--画像リンク化-->
                   <p><%= image_tag post.get_image, class: 'post_image' %></p>
                   <div class = "user_reaciton">
                     <%= "#{post.comments.count} コメント" %>

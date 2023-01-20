@@ -6,9 +6,10 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy #favoriteが多側
 
   #バリデーション 文字数指定あり
+  #「uniqueness: false」で同じタイトル、本文投稿可能になる
   validates :image, presence: true
-  validates :title, length: { minimum: 1, maximum: 15}, presence: true, uniqueness: true
-  validates :introduction, length: { minimum: 1, maximum: 200 }, presence: true, uniqueness: true
+  validates :title, length: { minimum: 1, maximum: 15}, presence: true, uniqueness: false
+  validates :introduction, length: { minimum: 1, maximum: 200 }, presence: true, uniqueness: false
 
   #投稿時写真有無判断
   def get_image

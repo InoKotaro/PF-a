@@ -5,25 +5,25 @@
 
 //card
 .frofile_image{
-    margin: 10px 10px;
-    border-radius: 50%;
-    width: 70px;
-    height: 70px;
-    object-fit: cover;
+  margin: 10px 0 20px 10px;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
 }
 
 .frofile_image:hover {
-    opacity: 0.6;
+  opacity: 0.6;
 }
 
 .post_image{
-    width: 100%;
-    aspect-ratio: 5 / 3;
-    border-radius: 10px;
+  width: 100%;
+  aspect-ratio: 5 / 3;
+  border-radius: 10px;
 }
 
 .content{
-    text-align: center;
+  text-align: center;
 }
 
 .text{
@@ -42,20 +42,24 @@
   font-size: 22px;
 }
 
-.date_time{
-  margin: 2% 5% 2% 77%;
-  white-space:nowrap;
+.under_content{
+  width: 100%;
+  padding: 3% 0 1% 20%;
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid;
 }
 
-.user_reaction{
-  width: 100%;
-  padding: 0 0 3% 7%;
+#comment_{
+ margin-left: 3%;
+}
+
+.date_time{
+  margin-left: 20%;
 }
 
 .post_delete{
-  padding: 0 0 3% 90%;
-  width: 100%;
-  border-bottom: 1px solid;
+  margin-left: 10%;
 }
 
 //コメント

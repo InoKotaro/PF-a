@@ -16,23 +16,27 @@
               <h2 class = "title"><%= @post.title %></h2> <!--タイトル-->
               <p class = "introduction"><%= @post.introduction %></p> <!--紹介文-->
             </div>
-            <div class = "date_time">
-              <%= @post.created_at.strftime('%Y/%m/%d %H:%M') %><!--投稿日-->
-            </div>
 
-            <div class = "user_reaction">
-              <!--いいね機能テンプレート化-->
-              <%= render 'public/favorites/favorite', post: @post %>
-              <!--コメント数-->
-              <%= "#{@post.comments.count} コメント" %>
-            </div>
-
-            <div class = "post_delete">
+            <div class = "under_content">
+              <div id = "favorite_button">
+                <!--いいね機能テンプレート化-->
+                <%= render 'public/favorites/favorite', post: @post %>
+              </div>
+              <div id = "comment_count">
+                <!--コメント数-->
+                <%= "#{@post.comments.count} コメント" %>
+              </div>
+              <div class = "date_time">
+                <!--投稿日-->
+                <%= @post.created_at.strftime('%Y/%m/%d  %H:%M') %>
+              </div>
               <!--投稿者とログイン中ユーザーが一致した場合のみ削除ボタン表示-->
-              <% if @post.user == current_user %>
-                <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "削除しますか？"} %>
-              <% end %>
-            </div>
+              <div class = "post_delete">
+                <% if @post.user == current_user %>
+                  <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "投稿を削除しますか？"} %>
+                <% end %>
+              </div>
+            </div> <!--cunder_content閉じ-->
 
             <div class = "comment_contents">
               <!--コメント投稿フォーム-->
@@ -44,12 +48,12 @@
               <div id = "comment_list">
                 <%= render 'public/comments/comment_list', post: @post %>
               </div>
-            </div>
+            </div> <!--comment_contents閉じ-->
 
-          </div><!--card-body閉じ-->
-        </div><!--card m-3 閉じ-->
+          </div> <!--card-body閉じ-->
+        </div> <!--card m-3閉じ-->
 
-    </div><!--col閉じ-->
-  </div><!--row閉じ-->
+    </div> <!--col閉じ-->
+  </div> <!--row閉じ-->
 </div> <!--container閉じ-->
 

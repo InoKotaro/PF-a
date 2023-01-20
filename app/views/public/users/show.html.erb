@@ -1,32 +1,39 @@
 <div class = "container">
   <div class = "row">
 
-    <!--ユーザー情報-->
-    <div>
-      <h3><%= @user.name %></h3>
-      <%= image_tag @user.get_profile_image(100,100) %>
-      <p><%= @user.introduction %></p>
+        <!--ユーザー情報-->
+        <div class = "user_info">
+          <%= image_tag @user.get_profile_image(100,100), class: 'info_user_profile_image' %>
+          <h3 class = "info_user_name"><%= @user.name %></h3>
+          <p class ="info_user_introduction"><%= @user.introduction %></p>
 
-      <!---------------フォロー,フォロワー一覧リンク↓---------------->
-      <%= link_to "#{@user.followings.count} フォロー", user_followings_path(@user) %>
-      <%= link_to "#{@user.followers.count} フォロワー", user_followers_path(@user) %>
-      <!------------------------------------------------------------->
+          <!--フォロー,フォロワー一覧リンク-->
+          <div class = "follow_list">
+            <div id = "followings">
+              <%= link_to "#{@user.followings.count} フォロー", user_followings_path(@user) %>
+            </div>
+            <div id = "followings">
+              <%= link_to "#{@user.followers.count} フォロワー", user_followers_path(@user) %>
+            </div>
+          </div>
 
-      <!--ログイン中ユーザーがtrue &&(且つ) ゲストログインユーザーがfalseで表示-->
-      <% if @user == current_user && @user.is_guest? == false %>
-        <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-      <% end %>
-    </div>
+          <div>
+            <!--ログイン中ユーザーがtrue &&(且つ) ゲストログインユーザーがfalseで表示-->
+            <% if @user == current_user && @user.is_guest? == false %>
+              <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+            <% end %>
+          </div>
 
-    <!--フォロー機能-->
-    <div>
-      <%= render 'public/relationships/follow_btn', user: @user %>
-    </div>
+          <!--フォロー機能-->
+          <div id = "follow_botton">
+            <%= render 'public/relationships/follow_btn', user: @user %>
+          </div>
 
-    <!--ログイン中ユーザーにだけ表示-->
-    <% if @user == current_user %>
-       <%= link_to "いいねした投稿", favorite_list_users_path %> <!--いいね一覧へ遷移-->
-    <% end %>
+          <!--ログイン中ユーザーにだけ表示-->
+          <% if @user == current_user %>
+             <%= link_to "いいねした投稿", favorite_list_users_path %> <!--いいね一覧へ遷移-->
+          <% end %>
+        </div>
 
      <!--ユーザーの投稿一覧-->
     <div>
@@ -35,4 +42,7 @@
 
   </div> <!--row閉じ-->
 </div> <!--container閉じ-->
+
+<!--ページネーション-->
+<%= paginate @posts, class: 'enter-block'%>
 

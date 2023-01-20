@@ -1,3 +1,66 @@
 // Place all the styles related to the public/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.users{ //css個別指定
+
+//info
+.user_info{
+  margin-left: 7%;
+}
+
+.info_user_profile_image{
+  margin: 10px 0 20px 10px;
+  border-radius: 50%;
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+}
+
+.info_user_name{
+  margin-left: 0.7%;
+  font-size: 50px;
+}
+
+.info_user_introduction{
+  margin-left: 0.7%;
+  font-size: 20px;
+}
+
+.follow_list{
+  margin-left: 1%;
+  display: flex;
+}
+
+//card
+.frofile_image{
+  margin: 10px 0 20px 10px;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+}
+
+.frofile_image:hover {
+  opacity: 0.6;
+}
+
+.post_image{
+  width: 100%;
+  aspect-ratio: 5 / 3;
+  border-radius: 10px;
+}
+
+.post_image:hover {
+  opacity: 0.6;
+}
+
+.user_reaction{
+  text-align: center;
+}
+
+//ページネーション
+.page_nation{
+  text-align: center;
+}
+
+} //css個別指定範囲終了
