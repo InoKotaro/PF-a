@@ -51,7 +51,6 @@ Rails.application.routes.draw do
 
   #管理者側ルート
   namespace :admin do
-    get "/" => "users#index"
     resources :users, only: [:index]
   end
 
