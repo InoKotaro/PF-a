@@ -63,7 +63,7 @@ class Public::UsersController < ApplicationController
   #ログイン中ユーザー判別
   def is_matching_login_user
     user_id = params[:id].to_i
-    unless Post.find(user_id).user == current_user
+    unless user_id == current_user.id
       redirect_to root_path
     end
   end
@@ -86,5 +86,4 @@ class Public::UsersController < ApplicationController
   def admin_user
     redirect_to(root_url) unless current_user.admin?
   end
-
 end
