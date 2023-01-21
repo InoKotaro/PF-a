@@ -1,3 +1,37 @@
 // Place all the styles related to the public/relationships controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.relationships{ //css個別指定
+
+//フォロー一覧
+//「フォロー一覧」タイトル
+.followings_title{
+  margin-bottom: 3%;
+}
+
+//card
+.frofile_image{
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.card-body{
+  text-align: center;
+}
+
+.card-body:hover{
+   opacity: 0.6;
+}
+
+//フォロワー一覧
+//「フォロワー一覧」タイトル
+
+
+//ページネーション
+.page_nation{
+  text-align: center;
+}
+
+} //css個別指定終了

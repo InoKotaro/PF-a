@@ -1,16 +1,11 @@
 class Public::UsersController < ApplicationController
-  before_action :is_matching_login_user, only: [:index, :edit, :update, :destroy] #ログイン中ユーザーのみアクセス可能ページ
-  
+  before_action :is_matching_login_user, only: [:edit, :update, :destroy] #ログイン中ユーザーのみアクセス可能ページ
   before_action :ensure_guest_user, only: [:edit] #ゲストログインユーザーはユーザー編集ページへアクセス不可
-
-  def index
-    @users = User.all
-  end
 
   def show
     @user = User.find(params[:id])
     @posts= @user.posts #特定ユーザーの投稿分のみ格納
-    @posts = @user.posts.page(params[:page]) #ページネーション
+    @posts = @user.posts.order(created_at: :desc).page(params[:page]) #ページネーション
   end
 
   def edit
@@ -67,8 +62,6 @@ class Public::UsersController < ApplicationController
       redirect_to root_path
     end
   end
-
-  
 
   #ゲストログインユーザー判別
   def ensure_guest_user

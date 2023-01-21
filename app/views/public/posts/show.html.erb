@@ -1,4 +1,4 @@
-<div class = "container-lg w-75">
+<div class = "container-lg w-90">
   <div class = "row">
     <div class = "col">
 
@@ -15,28 +15,31 @@
             <div class = "text">
               <h2 class = "title"><%= @post.title %></h2> <!--タイトル-->
               <p class = "introduction"><%= @post.introduction %></p> <!--紹介文-->
+              <!--投稿日-->
+              <div class = "date_time">
+                  <%= @post.created_at.strftime('%Y/%m/%d  %H:%M') %>
+              </div>
             </div>
 
             <div class = "under_content">
-              <div id = "favorite_button">
-                <!--いいね機能テンプレート化-->
-                <%= render 'public/favorites/favorite', post: @post %>
+              <div class = "user_reactions">
+                <div id = "favorite_button">
+                  <!--いいね機能テンプレート化-->
+                  <%= render 'public/favorites/favorite', post: @post %>
+                </div>
+                <div id = "comment_count">
+                  <!--コメント数-->
+                  <%= "#{@post.comments.count} コメント" %>
+                </div>
               </div>
-              <div id = "comment_count">
-                <!--コメント数-->
-                <%= "#{@post.comments.count} コメント" %>
-              </div>
-              <div class = "date_time">
-                <!--投稿日-->
-                <%= @post.created_at.strftime('%Y/%m/%d  %H:%M') %>
-              </div>
-              <!--投稿者とログイン中ユーザーが一致した場合のみ削除ボタン表示-->
+
+                <!--投稿者とログイン中ユーザーが一致した場合のみ削除ボタン表示-->
               <div class = "post_delete">
                 <% if @post.user == current_user %>
                   <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "投稿を削除しますか？"} %>
                 <% end %>
               </div>
-            </div> <!--cunder_content閉じ-->
+            </div> <!--under_content閉じ-->
 
             <div class = "comment_contents">
               <!--コメント投稿フォーム-->

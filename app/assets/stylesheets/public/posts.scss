@@ -43,23 +43,31 @@
 }
 
 .under_content{
-  width: 100%;
-  padding: 3% 0 1% 20%;
-  display: flex;
-  width: 100%;
+  margin: 0 auto;
   border-bottom: 1px solid;
 }
 
-#comment_{
- margin-left: 3%;
+.user_reactions{
+  justify-content: center;
+  display: flex;
+}
+
+#favorite_button{
+  white-space: nowrap;
+}
+
+#comment_count{
+  margin-left: 10%;
+  white-space: nowrap;
 }
 
 .date_time{
-  margin-left: 20%;
+  margin: 0 12% 0 75%;
+  white-space: nowrap;
 }
 
 .post_delete{
-  margin-left: 10%;
+  margin: 0 0 2% 90%;
 }
 
 //コメント
@@ -68,7 +76,7 @@
 }
 
 .comment_contents{
-  margin-top: 3%;
+  margin: 3% 0 2% 0;
   text-align: center;
 }
 
