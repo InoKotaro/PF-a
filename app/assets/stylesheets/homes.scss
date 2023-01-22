@@ -3,12 +3,16 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .homes{ //css個別指定
 
+.search_form{
+  margin-left: 2%;
+}
+
 //card
 .frofile_image{
-  margin: 2px 0 17px 3px;
+  margin: 10px 10px;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   object-fit: cover;
 }
 
@@ -26,7 +30,11 @@
   opacity: 0.6;
 }
 
-.user_reaciton{
+.profile_user_name{
+  margin-left: 1%;
+}
+
+.user_reaction{
   text-align: center;
 }
 

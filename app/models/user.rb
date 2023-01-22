@@ -17,7 +17,7 @@ class User < ApplicationRecord
   #--------------------------------------------------------------------------------------------------
 
   #ユーザー名,自己紹介文バリデーション 文字数指定あり
-  validates :name, length: { minimum: 2, maximum: 15 }, presence: true, uniqueness: true
+  validates :name, length: { minimum: 2, maximum: 9}, presence: true, uniqueness: true
   validates :introduction, length: { maximum: 30 }
 
   #プロフィール画像サイズ処理

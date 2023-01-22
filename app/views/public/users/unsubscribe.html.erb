@@ -1,10 +1,20 @@
-<div>
-  <h2>本当に退会しますか？</h2>
-  <div>
-    <p>退会する場合は、『退会する』をクリックしてください。</p>
-  </div>
-  <div>
-    <%= link_to '退会しない', root_path %>
-    <%= link_to "退会する", user_withdraw_user_path(@user.id), method: :patch, data: { confilm: "本当に退会しますか？" } %>
-  </div>
-</div>
+<div class = "container-lg w-90">
+  <div class = "row w-75 mx-auto">
+    <div class = "col">
+
+      <div class = "withdrawal_contens">
+        <h2 class = "withdrawal_title">本当に退会しますか？</h2>
+        <div>
+          <p class = "withdrawal_text">退会する場合は、『退会する』をクリックしてください。</p>
+        </div>
+        <div class = "withdrawal">
+          <%= link_to '退会しない', root_path %>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--空白-->
+          <%= link_to "退会する", user_withdraw_user_path(@user.id), method: :patch, data: { confirm: "本当に退会しますか？" } %>
+        </div>
+      </div>
+
+    </div> <!--col閉じ-->
+  </div> <!--row閉じ-->
+</div> <!--container閉じ-->
+

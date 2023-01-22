@@ -25,6 +25,7 @@ class Post < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
+  #------------------検索機能-----searchesコントローラで使うメソッド↓-----------------
   #投稿タイトル検索
   def self.looks(search, word)
     if search == "perfect_match"
@@ -39,5 +40,6 @@ class Post < ApplicationRecord
       @post = Post.all
     end
   end
+  #----------------------------------------------------------------------------------
 
 end

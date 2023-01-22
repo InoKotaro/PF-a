@@ -1,3 +1,60 @@
 // Place all the styles related to the public/searches controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.searches{ //css個別指定
+
+.row{
+  text-align: center;
+}
+
+//post/result
+.frofile_image{
+  margin: 2px 0 17px 3px;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+
+.frofile_image:hover {
+  opacity: 0.6;
+}
+
+.user_reaciton{
+  text-align: center;
+}
+
+.post_image{
+  width: 100%;
+  aspect-ratio: 5 / 3;
+  border-radius: 10px;
+}
+
+.post_image:hover {
+  opacity: 0.6;
+}
+
+//user/result
+.result_frofile_image{
+  margin: 2px 0 3px 3px;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+
+.result_frofile_image:hover {
+  opacity: 0.6;
+}
+
+.result_frofile_name{
+  text-align: center;
+  padding: 20px 0;
+}
+
+//ページネーション
+.page_nation{
+  text-align: center;
+}
+
+} //css個別指定範囲終了

@@ -1,18 +1,37 @@
-<h2>プロフィール編集</h2>
+<div class = "container">
+  <div class = "row w-75 mx-auto">
 
-<%= form_with model: @user, method: :patch do |f| %>
+    <h2 class =  "edit_title">プロフィール編集</h2>
+    <%= form_with model: @user, method: :patch do |f| %>
+      <div class = "edit_contents">
+        <div class = "image_edit">
+          <label for="inputImage">プロフィール画像</label>
+           &nbsp;&nbsp;&nbsp;<!--空白-->
+          <%= f.file_field :profile_image, placeholder:"プロフィール画像", accept: "image/*" %>
+        </div>
 
-  <label for="inputImage">プロフィール画像</label>
-  <%= f.file_field :profile_image, placeholder:"プロフィール画像", accept: "image/*" %>
+        <div class = "name_edit">
+          <label for="inputName">名前</label>
+           &nbsp;&nbsp;&nbsp;<!--空白-->
+          <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
+        </div>
 
-  <label for="inputName">名前</label>
-  <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
+        <div class = "introduction_edit">
+          <label for="inputIntroduction">自己紹介</label>
+           &nbsp;&nbsp;&nbsp;<!--空白-->
+          <%= f.text_field :introduction, autofocus: true, id:"inputIntroduction" %>
+        </div>
 
-  <label for="inputIntroduction">自己紹介</label>
-  <%= f.text_field :introduction, autofocus: true, id:"inputIntroduction" %>
+        <div class = "submit_botton">
+          <%= f.submit "変更を保存" %>
+        </div>
+      <% end %> <!--form_with終了-->
 
-  <%= f.submit "変更を保存" %>
+        <div class = "withdrawal_link">
+          <%= link_to '退会', user_confirm_unsubscribe_path(@user.id) %>
+        </div>
 
-<% end %>
+    </div> <!--edit_contents閉じ-->
 
-  <%= link_to '退会', user_confirm_unsubscribe_path(@user.id) %>
+  </div> <!--row閉じ-->
+</div> <!--container閉じ-->

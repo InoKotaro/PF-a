@@ -1,27 +1,68 @@
-<h2>検索結果</h2>
+<div class = "container">
+  <div class = "row w-50 mx-auto">
 
-<table class="table table-hover table-inverse">
-  <!--検索対象モデルがUserの時 -->
-  <% if @range == "User" %>
+    <h3 class = "title">検索結果</h2>
 
-    <tbody>
-      <% @users.each do |user| %>
-        <tr>
-          <td><%= user.name %></td> <!--ユーザー名-->
-          <%= image_tag user.get_profile_image(100,100) %>
-        </tr>
-      <% end %>
-    </tbody>
-  <% else %>
-    <tbody>
-      <% @posts.each do |post| %>
-        <tr>
-          <%= image_tag post.get_image %>
-          <td><%= post.title %></td> <!--タイトル-->
-          <td><%= post.introduction %></td> <!--紹介文-->
-        </tr>
-      <% end %>
-    </tbody>
+      <!--検索対象モデルがUserの時 -->
+      <% if @range == "User" %>
 
-  <% end %> <!--if文範囲終了-->
-</table>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td>
+                  <%= link_to user_path(user) do %> <!--リンク化-->
+                    <%= image_tag user.get_profile_image(100,100), class: 'result_frofile_image'%>
+                  <% end %>
+                </td>
+
+                <td>
+                  <%= link_to user_path(user) do %> <!--リンク化-->
+                    <div class = "result_frofile_name"><%= user.name %></div>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %> <!--each文範囲終了-->
+          </tbody>
+        </table> <!--table範囲終了-->
+
+      <% else %> <!--if文途中-->
+
+            <% @posts.each do |post| %>
+              <div class="col-md-4">
+                <div class = "card h-90">
+                  <div class = "card-body ">
+
+                    <%= link_to user_path(post.user) do %> <!--画像リンク化-->
+                      <%= image_tag post.user.get_profile_image(100,100), class: 'frofile_image' %> <!--ユーザーアイコン-->
+                      &nbsp;<!--空白-->
+                      <%= post.user.name %> <!--名前-->
+                    <% end %>
+
+                    <%= link_to post_path(post.id) do %> <!--画像リンク化-->
+                      <p><%= image_tag post.get_image, class: 'post_image' %></p>
+                      <div class = "user_reaciton">
+                        <%= "#{post.comments.count} コメント" %>
+                        &nbsp;<!--空白-->
+                        <%= "#{post.favorites.count} いいね" %>
+                        &nbsp;<!--空白-->
+                        <%= post.created_at.strftime('%Y/%m/%d') %><!--投稿日-->
+                      </div>
+                    <% end %>
+
+                  </div> <!--card-body閉じ-->
+                </div>　<!--card h-90閉じ-->
+              </div> <!--ccol-md-4閉じ-->
+            <% end %> <!--each文閉じ-->
+
+      <% end %> <!--if文範囲終了-->
+
+  </div> <!--row閉じ-->
+</div> <!--container閉じ-->

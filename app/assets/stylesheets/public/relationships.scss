@@ -9,12 +9,17 @@
   margin-bottom: 3%;
 }
 
-//card
-.frofile_image{
+.result_frofile_image{
+  margin: 3% 0 0 30%;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   object-fit: cover;
+}
+
+.result_frofile_name{
+  text-align: center;
+  padding: 30px 0;
 }
 
 .card-body{
@@ -24,9 +29,6 @@
 .card-body:hover{
    opacity: 0.6;
 }
-
-//フォロワー一覧
-//「フォロワー一覧」タイトル
 
 
 //ページネーション
