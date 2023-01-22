@@ -1,11 +1,36 @@
-<p>いいねした投稿一覧</p>
+<div class = "container">
+  <div class = "row">
+    <h3 class = "favorite_list_title">いいね一覧</h3>
 
-<% @favorite_list.each do |list| %>
+    <% @favorite_list.each do |list| %>
+      <div class="col-md-4">
+        <div class = "card h-90">
+          <div class = "card-body ">
 
-  <%= link_to image_tag( list.image.variant(resize: '100x100') ), post_path(list.id) %>
-  <%= link_to list.user.name, user_path(list.user.id) %>
-  <%= list.favorites.length %>
-  <%= link_to list.title, post_path(list.id) %>
-  <%= link_to list.introduction, post_path(list.id) %>
+            <%= link_to user_path(list.user) do %> <!--画像リンク化-->
+              <%= image_tag list.user.get_profile_image(100,100), class: 'frofile_image' %><!--ユーザーアイコン-->
+              &nbsp;<!--空白-->
+              <%= list.user.name %> <!--名前-->
+            <% end %>
 
-<% end %>
+            <%= link_to post_path(list) do %> <!--画像リンク化-->
+              <p><%= image_tag list.get_image, class: 'post_image' %></p>
+              <div class = "user_reaction">
+                <%= "#{list.comments.count} コメント" %>
+                &nbsp;<!--空白-->
+                <%= "#{list.favorites.count} いいね" %>
+                &nbsp;<!--空白-->
+                <%= list.created_at.strftime('%Y/%m/%d') %><!--投稿日-->
+              </div>
+            <% end %>
+
+          </div> <!--card-body閉じ-->
+        </div>　<!--card m-3閉じ-->
+      </div> <!--ccol-md-4閉じ-->
+
+
+
+    <% end %>
+
+  </div> <!--row閉じ-->
+</div> <!--container閉じ-->

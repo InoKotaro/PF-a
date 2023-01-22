@@ -70,8 +70,9 @@
 
 //////editページ
 .edit_title{
-  margin: 3% 0 0 6%;
+  margin: 6% 0 0 6%;
 }
+
 .edit_contents{
   text-align: center;
   padding: 30px 0;
@@ -116,10 +117,18 @@
 .withdrawal{
   margin: 10% 3% 0 0;
 }
+
 //ページネーション
 .page_nation{
   text-align: center;
 }
 
+.result_frofile_image{
+  margin: 3% 0 0 30%;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+}
 
 } //css個別指定範囲終了

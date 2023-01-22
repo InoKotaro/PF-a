@@ -6,7 +6,11 @@
 //フォロー一覧
 //「フォロー一覧」タイトル
 .followings_title{
-  margin-bottom: 3%;
+  margin: 6% 0 3% 0;
+}
+
+.followers_list_title{
+  margin: 6% 0 3% 0;
 }
 
 .result_frofile_image{
@@ -29,7 +33,6 @@
 .card-body:hover{
    opacity: 0.6;
 }
-
 
 //ページネーション
 .page_nation{

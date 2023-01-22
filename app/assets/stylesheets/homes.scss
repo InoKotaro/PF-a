@@ -4,12 +4,12 @@
 .homes{ //css個別指定
 
 .search_form{
-  margin-left: 2%;
+  margin: 2.5% 0 1% 1%;
 }
 
 //card
 .frofile_image{
-  margin: 10px 10px;
+  margin: 0 2% 5% 2%;
   border-radius: 50%;
   width: 70px;
   height: 70px;
@@ -18,6 +18,14 @@
 
 .frofile_image:hover {
   opacity: 0.6;
+}
+
+.user_profile{
+  display: flex;
+}
+
+.profile_user_name{
+  margin: 2% 0 0 0;
 }
 
 .post_image{
@@ -30,12 +38,19 @@
   opacity: 0.6;
 }
 
-.profile_user_name{
-  margin-left: 1%;
-}
-
 .user_reaction{
   text-align: center;
+}
+
+#form{
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+}
+
+.arrow{
+  width: 90px;
+  height: 90px;
 }
 
 //ページネーション
