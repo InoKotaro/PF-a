@@ -92,4 +92,30 @@
   border-radius: 13px;
 }
 
+.comment_area{
+  margin-top: 6%;
+}
+
+.button {
+  margin: 3% 0 2% 0;
+  display       : inline-block;
+  border-radius : 30%;
+  font-size     : 15pt;
+  text-align    : center;
+  cursor        : pointer;
+  padding       : 11px 38px;
+  background    : #ffaf60;
+  color         : #ffffff;
+  line-height   : 1em;
+  transition    : .3s;
+  box-shadow    : 2px 2px 3px #666666;
+  border        : 2px solid #ff7f00;
+}
+.button:hover {
+  box-shadow    : none;
+  color         : #ff7f00;
+  background    : #ffffff;
+}
+
+
 } //css個別指定範囲終了
