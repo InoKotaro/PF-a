@@ -1,0 +1,10 @@
+ <!--「post」部分（メソッド指定は除く）が元インスタンス変数-->
+
+<% if post.errors.any? %>
+  <%= post.errors.count %>件のエラーが発生しました
+  <ul>
+    <% post.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>

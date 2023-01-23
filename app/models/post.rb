@@ -37,7 +37,7 @@ class Post < ApplicationRecord
     elsif search == "partial_match"
       @post = Post.where("title LIKE?","%#{word}%")
     else
-      @post = Post.all
+      @post = Post.all.order(created_at: :desc).page(params[:page]) #投稿降順設定/ページネーション
     end
   end
   #----------------------------------------------------------------------------------

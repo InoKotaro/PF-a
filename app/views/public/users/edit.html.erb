@@ -1,7 +1,7 @@
 <div class = "container">
   <div class = "row w-75 mx-auto">
 
-    <h2 class =  "edit_title">プロフィール編集</h2>
+    <h3 class = "edit_title">プロフィール編集</h3>
     <%= form_with model: @user, method: :patch do |f| %>
       <div class = "edit_contents">
         <div class = "image_edit">
@@ -22,7 +22,7 @@
           <%= f.text_field :introduction, autofocus: true, id:"inputIntroduction" %>
         </div>
 
-        <div class = "submit_botton">
+        <div class = "submit_button">
           <%= f.submit "変更を保存" %>
         </div>
       <% end %> <!--form_with終了-->

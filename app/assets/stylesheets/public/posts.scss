@@ -3,12 +3,12 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .posts{ //css個別指定
 
-//card
+///card///
 .frofile_image{
   margin: 10px 0 20px 10px;
   border-radius: 50%;
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   object-fit: cover;
 }
 
@@ -70,7 +70,7 @@
   margin: 0 0 2% 90%;
 }
 
-//コメント
+///コメント///
 .card{
   margin: 3% 2% 3% 2%;
 }
@@ -89,6 +89,7 @@
 
 .text_area{
   width: 70%;
+  border-radius: 13px;
 }
 
 } //css個別指定範囲終了

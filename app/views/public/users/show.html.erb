@@ -1,46 +1,46 @@
 <div class = "container">
   <div class = "row">
 
-        <!--ユーザー情報-->
-        <div class = "user_info">
+    <!--ユーザー情報-->
+    <div class = "user_info">
 
-          <%= image_tag @user.get_profile_image(100,100), class: 'info_user_profile_image' %>
-          <h3 class = "info_user_name"><%= @user.name %></h3>
-          <p class ="info_user_introduction"><%= @user.introduction %></p>
+      <%= image_tag @user.get_profile_image(100,100), class: 'info_user_profile_image' %>
+      <h3 class = "info_user_name"><%= @user.name %></h3>
+      <p class ="info_user_introduction"><%= @user.introduction %></p>
 
-          <!--フォロー,フォロワー一覧リンク-->
-          <div class = "follow_list">
-            <div id = "followings">
-              <%= link_to "#{@user.followings.count} フォロー", user_followings_path(@user) %>
-            </div>
-             &nbsp;&nbsp;&nbsp;<!--空白-->
-            <div id = "followings">
-              <%= link_to "#{@user.followers.count} フォロワー", user_followers_path(@user) %>
-            </div>
-          </div>
+      <!--フォロー,フォロワー一覧リンク-->
+      <div class = "follow_list">
+        <div id = "followings">
+          <%= link_to "#{@user.followings.count} フォロー", user_followings_path(@user) %>
+        </div>
+         &nbsp;&nbsp;&nbsp;<!--空白-->
+        <div id = "followings">
+          <%= link_to "#{@user.followers.count} フォロワー", user_followers_path(@user) %>
+        </div>
+      </div>
 
-          <div class = "user_contents">
-            <!--ログイン中ユーザーがtrue &&(且つ) ゲストログインユーザーがfalseで表示-->
-            <div class = "user_profile_edit">
-              <% if @user == current_user && @user.is_guest? == false %>
-                <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-              <% end %>
-            </div>
-            <div class = "user_favorite_posts"><!--ログイン中ユーザーにだけ表示-->
-              <% if @user == current_user %>
-                 <%= link_to "いいねした投稿", favorite_list_users_path %> <!--いいね一覧へ遷移-->
-              <% end %>
-            </div>
-          </div> <!--user_contents閉じ-->
+      <div class = "user_contents">
+        <!--ログイン中ユーザーがtrue &&(且つ) ゲストログインユーザーがfalseで表示-->
+        <div class = "user_profile_edit">
+          <% if @user == current_user && @user.is_guest? == false %>
+            <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+          <% end %>
+        </div>
+        <div class = "user_favorite_posts"><!--ログイン中ユーザーにだけ表示-->
+          <% if @user == current_user %>
+             <%= link_to "いいねした投稿", favorite_list_users_path %> <!--いいね一覧へ遷移-->
+          <% end %>
+        </div>
+      </div> <!--user_contents閉じ-->
 
-          <!--フォロー機能-->
-          <div id = "follow_botton">
-            <%= render 'public/relationships/follow_btn', user: @user %>
-          </div>
+      <!--フォロー機能-->
+      <div id = "follow_botton">
+        <%= render 'public/relationships/follow_btn', user: @user %>
+      </div>
 
-        </div> <!--user_info閉じ-->
+    </div> <!--user_info閉じ-->
 
-     <!--ユーザーの投稿一覧-->
+   <!--ユーザーの投稿一覧-->
     <div>
       <%= render 'public/posts/post_list', posts: @posts %>
     </div>

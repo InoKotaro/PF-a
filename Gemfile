@@ -67,6 +67,6 @@ gem "net-imap"
 
 gem 'devise' #ログイン機能
 
-gem 'rails-i18n'#エラーメッセージ日本語化
+gem 'rails-i18n' #エラーメッセージ日本語化
 
 gem 'kaminari','~> 1.2.1' #ページネーション

@@ -7,21 +7,28 @@
   text-align: center;
 }
 
-//post/result
+.title{
+  margin: 6% 0 6% 0;
+}
+///post/result///
+.user_profile{
+  display: flex;
+}
+
 .frofile_image{
-  margin: 2px 0 17px 3px;
+  margin: 0 2% 22% 10%;
   border-radius: 50%;
   width: 60px;
   height: 60px;
   object-fit: cover;
 }
 
-.frofile_image:hover {
+.frofile_image:hover{
   opacity: 0.6;
 }
 
-.user_reaciton{
-  text-align: center;
+.user_profile_name{
+  margin: 20px 0 2px 20px;
 }
 
 .post_image{
@@ -34,7 +41,11 @@
   opacity: 0.6;
 }
 
-//user/result
+.user_reaction{
+  text-align: center;
+}
+
+///user/result///
 .result_frofile_image{
   margin: 2px 0 3px 3px;
   border-radius: 50%;
@@ -52,7 +63,7 @@
   padding: 20px 0;
 }
 
-//ページネーション
+///ページネーション///
 .page_nation{
   text-align: center;
 }

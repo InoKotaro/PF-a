@@ -1,22 +1,30 @@
-<!--バリデーションエラーメッセージ-->
-<% if @post.errors.any? %>
-  <%= @post.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @post.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+<div class = "container">
+  <div class = "row w-75 mx-auto">
+
+    <!--バリデーションエラーメッセージ-->
+    <%= render 'homes/error_message', post: @post %>
+
+    <h3 class = "post_title">投稿フォーム</h3>
+    <%= form_with model: @post do |f| %>
+      <div class = "post_contents">
+
+        <div class = "image_post">画像
+          &nbsp;&nbsp;&nbsp;<!--空白-->
+          <%= f.file_field :image, accept: "image/*" %>
+        </div>
+        <div class = "title_post">タイトル
+          &nbsp;&nbsp;&nbsp;<!--空白-->
+          <%= f.text_field :title %>
+        </div>
+        <div class = "introduction_post">紹介
+          &nbsp;&nbsp;&nbsp;<!--空白-->
+          <%= f.text_area :introduction %>
+        </div>
+
+      <%= f.submit '投稿' %>
+
     <% end %>
-  </ul>
-<% end %>
+    </div> <!--post_contents閉じ-->
 
-<h1>投稿フォーム</h1>
-<%= form_with model: @post do |f| %>
-
-  <h4>画像</h4>
-    <%= f.file_field :image, accept: "image/*" %>
-  <h4> タイトル</h4>
-    <%= f.text_field :title %>
-  <h4>紹介</h4>
-    <%= f.text_area :introduction %>
-  <%= f.submit '投稿' %>
-
-<% end %>
+  </div> <!--row閉じ-->
+</div> <!--container閉じ-->

@@ -4,19 +4,37 @@
 .homes{ //css個別指定
 
 .search_form{
-  margin: 2.5% 0 1% 1%;
+  margin: 1% 0 1% 1%;
 }
 
-//card
+#word{
+  border-radius: 130px;
+  padding: 5px 10px;
+  border-width: 1px;
+}
+
+#range{
+  border-radius: 130px;
+}
+
+#search{
+  border-radius: 130px;
+}
+
+.btn{
+   border-radius: 130px;
+}
+
+///card///
 .frofile_image{
   margin: 0 2% 5% 2%;
   border-radius: 50%;
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   object-fit: cover;
 }
 
-.frofile_image:hover {
+.frofile_image:hover{
   opacity: 0.6;
 }
 
@@ -39,22 +57,6 @@
 }
 
 .user_reaction{
-  text-align: center;
-}
-
-#form{
-  position: fixed;
-  right: 50px;
-  bottom: 50px;
-}
-
-.arrow{
-  width: 90px;
-  height: 90px;
-}
-
-//ページネーション
-.page_nation{
   text-align: center;
 }
 

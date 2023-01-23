@@ -20,8 +20,7 @@ class Public::UsersController < ApplicationController
 
   #いいね一覧
   def favorite_list
-    favorites = Favorite.where(user: current_user).pluck(:post_id)
-    @favorite_list = Post.find(favorites)
+    @favorite_list = Favorite.where(user: current_user).pluck(:post_id)
   end
 
   #-----------------フォロー機能↓------------------

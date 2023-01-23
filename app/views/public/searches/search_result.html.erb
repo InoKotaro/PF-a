@@ -1,12 +1,12 @@
 <div class = "container">
-  <div class = "row w-50 mx-auto">
+  <div class = "row">
 
     <h3 class = "title">検索結果</h2>
 
       <!--検索対象モデルがUserの時 -->
       <% if @range == "User" %>
 
-        <table class="table">
+        <table class="table mx-auto w-50">
           <thead>
             <tr>
               <th scope="col"></th>
@@ -22,7 +22,6 @@
                     <%= image_tag user.get_profile_image(100,100), class: 'result_frofile_image'%>
                   <% end %>
                 </td>
-
                 <td>
                   <%= link_to user_path(user) do %> <!--リンク化-->
                     <div class = "result_frofile_name"><%= user.name %></div>
@@ -40,11 +39,18 @@
                 <div class = "card h-90">
                   <div class = "card-body ">
 
-                    <%= link_to user_path(post.user) do %> <!--画像リンク化-->
-                      <%= image_tag post.user.get_profile_image(100,100), class: 'frofile_image' %> <!--ユーザーアイコン-->
-                      &nbsp;<!--空白-->
-                      <%= post.user.name %> <!--名前-->
-                    <% end %>
+                    <div class = "user_profile">
+                      <div class = "user_profile_image">
+                        <%= link_to user_path(post.user) do %> <!--画像リンク化-->
+                          <%= image_tag post.user.get_profile_image(100,100), class: 'frofile_image' %> <!--ユーザーアイコン-->
+                        <% end %>
+                      </div>
+                      <div class = "user_profile_name">
+                        <%= link_to user_path(post.user) do %> <!--画像リンク化-->
+                          <%= post.user.name %> <!--名前-->
+                        <% end %>
+                      </div>
+                    </div>
 
                     <%= link_to post_path(post.id) do %> <!--画像リンク化-->
                       <p><%= image_tag post.get_image, class: 'post_image' %></p>

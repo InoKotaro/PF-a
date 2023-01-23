@@ -9,19 +9,8 @@
       <%= render 'public/posts/post_list', posts: @posts %>
     </div>
 
-    <!--固定投稿フォームボタン-->
-
-
   </div> <!--row閉じ-->
 </div> <!--container閉じ-->
 
-<span id = "form">
-      <a href="">
-        <%= image_tag asset_path('arrow.png'), data: {"turbolinks"=>false}, class: "arrow" %>
-      </a>
-    </span>
-
   <!--ページネーション-->
 <%= paginate @posts, class: 'center-block'%>
-
-<script src="js/script.js"></script>
