@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-  before_action :is_matching_login_user, only: [:edit, :update, :destroy] #ログイン中ユーザーのみアクセス可能ページ
+  before_action :is_matching_login_user, only: [:show,:edit, :update, :destroy] #ログイン中ユーザーのみアクセス可能ページ
   before_action :ensure_guest_user, only: [:edit] #ゲストログインユーザーはユーザー編集ページへアクセス不可
 
   def show

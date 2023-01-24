@@ -3,8 +3,9 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .homes{ //css個別指定
 
+//------search------
 .search_form{
-  margin: 1% 0 1% 1%;
+  margin: 1% 0 1% 1.6%;
 }
 
 #word{
@@ -22,12 +23,18 @@
 }
 
 .btn{
-   border-radius: 130px;
+  border-radius: 130px;
+  border: none;
+  background-image: linear-gradient(90deg, rgba(254, 220, 64, 1), rgba(247, 130, 93, 1) 70%);
 }
 
-///card///
+//------card------
+.user_profile{
+  display: flex;
+}
+
 .frofile_image{
-  margin: 0 2% 5% 2%;
+  margin: 0 2% 22% 10%;
   border-radius: 50%;
   width: 60px;
   height: 60px;
@@ -38,13 +45,10 @@
   opacity: 0.6;
 }
 
-.user_profile{
-  display: flex;
+.user_profile_name{
+  margin: 20px 0 2px 20px;
 }
 
-.profile_user_name{
-  margin: 2% 0 0 0;
-}
 
 .post_image{
   width: 100%;

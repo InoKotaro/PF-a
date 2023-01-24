@@ -1,44 +1,112 @@
-<h2>Sign up</h2>
+<div class = "container">
+  <div class = "row w-75 mx-auto">
 
-<!--バリデーション-->
-<% if @user.errors.any? %>
-  <%= @user.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+    <!--バリデーション-->
+    <div class = "error_messages">
+      <% if @user.errors.any? %>
+        <%= @user.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
 
-<%= form_with model: @user, url: user_registration_path do |f| %>
-  <!--%= render "public/shared/error_messages", resource: resource %-->
+    <h3 class = "sign_up_title">新規登録</h3>
+    <%= form_with model: @user, url: user_registration_path do |f| %>
+    <!--%= render "public/shared/error_messages", resource: resource %-->
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+      <div class = "sign_up_contents mx-auto">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+            </tr>
+          </thead>
 
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+          <tbody>
+              <tr>
+                <td>
+                  <div class="field_name">
+                    <%= f.label :name %>
+                    &nbsp;&nbsp;&nbsp;<!--空白-->
+                    <%= f.text_field :name %>
+                  </div>
+                </td>
+              </tr>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+              <tr>
+                <td>
+                  <div class="field_email">
+                    <%= f.label :email %>&nbsp;&nbsp;&nbsp;<!--空白-->
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                  </div>
+                </td>
+              </tr>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+              <tr>
+                <td>
+                  <div class="field_passward">
+                    <%= f.label :password %>
+                    <% if @minimum_password_length %>
+                    <em>(<%= @minimum_password_length %>字以上)</em>
+                    <% end %>
+                    <%= f.password_field :password, autocomplete: "new-password" %>
+                  </div>
+                </td>
+              </tr>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+              <tr>
+                <td>
+                    <div class="field_passward-confirmation">
+                      <%= f.label :password_confirmation %>
+                      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+                    </div>
+                  </div>
+                </td>
+              </tr>
 
-<%= render "public/shared/links" %>
+          </tbody>
+        </table> <!--table範囲終了-->
+
+        <div class="actions">
+          <%= f.submit "Sign up" %>
+        </div>
+
+        <%= render "public/shared/links" %>
+
+      </div> <!--sign_up_contents閉じ-->
+    <% end %> <!--form_with終了-->
+
+  </div> <!--row閉じ-->
+</div> <!--container閉じ-->
+
+
+<style>
+.error_messages{
+  margin: 3% 0 -7% 0;
+}
+
+.sign_up_title{
+  margin: 7% 0 0 7%;
+}
+
+.sign_up_contents{
+ margin-top: 2%;
+}
+
+.field_name{
+  margin: 17px 0 17px 25%;
+}
+
+.field_email{
+  margin: 17px 0 17px 21%;
+}
+
+.field_passward{
+  margin: 17px 0 17px 17%;
+  white-space: nowrap;
+}
+
+</style>

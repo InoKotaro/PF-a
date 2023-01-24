@@ -34,39 +34,9 @@
 
       <% else %> <!--if文途中-->
 
-            <% @posts.each do |post| %>
-              <div class="col-md-4">
-                <div class = "card h-90">
-                  <div class = "card-body ">
-
-                    <div class = "user_profile">
-                      <div class = "user_profile_image">
-                        <%= link_to user_path(post.user) do %> <!--画像リンク化-->
-                          <%= image_tag post.user.get_profile_image(100,100), class: 'frofile_image' %> <!--ユーザーアイコン-->
-                        <% end %>
-                      </div>
-                      <div class = "user_profile_name">
-                        <%= link_to user_path(post.user) do %> <!--画像リンク化-->
-                          <%= post.user.name %> <!--名前-->
-                        <% end %>
-                      </div>
-                    </div>
-
-                    <%= link_to post_path(post.id) do %> <!--画像リンク化-->
-                      <p><%= image_tag post.get_image, class: 'post_image' %></p>
-                      <div class = "user_reaciton">
-                        <%= "#{post.comments.count} コメント" %>
-                        &nbsp;<!--空白-->
-                        <%= "#{post.favorites.count} いいね" %>
-                        &nbsp;<!--空白-->
-                        <%= post.created_at.strftime('%Y/%m/%d') %><!--投稿日-->
-                      </div>
-                    <% end %>
-
-                  </div> <!--card-body閉じ-->
-                </div>　<!--card h-90閉じ-->
-              </div> <!--ccol-md-4閉じ-->
-            <% end %> <!--each文閉じ-->
+        <div>
+          <%= render 'public/posts/post_list', posts: @posts %>
+        </div>
 
       <% end %> <!--if文範囲終了-->
 

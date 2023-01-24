@@ -41,8 +41,8 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #論理削除処理
   def destroy
     respond_with_navigational do #Deviceの論理削除後の後処理
-    sign_out current_user #強制ログアウト
-    redirect_to root_path #ログアウト後のページ遷移
+      sign_out current_user #強制ログアウト
+      redirect_to root_path #ログアウト後のページ遷移
     end
   end
 

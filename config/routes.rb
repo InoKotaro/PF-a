@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     get "search" => "searches#search"
 
     #ユーザー側ルート
-    resources :users, only: [:index, :show, :edit, :update] do
+    resources :users, only: [:show, :edit, :update] do
 
       #いいね一覧
       get :favorite_list, on: :collection

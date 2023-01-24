@@ -7,9 +7,14 @@
 
             <!--投稿詳細-->
             <%= link_to user_path(@post.user) do %> <!--画像リンク化-->
-              <%= image_tag @post.user.get_profile_image(100,100), class: 'frofile_image' %><!--ユーザーアイコン-->
-              &nbsp;<!--空白-->
-              <%= @post.user.name %> <!--名前-->
+              <div class = "user_profile">
+                <div class = "profile_image">
+                  <%= image_tag @post.user.get_profile_image(700,700), class: 'frofile_image' %><!--ユーザーアイコン-->
+                </div>
+                <div class = "profile_name">
+                  <%= @post.user.name %> <!--名前-->
+                </div>
+              </div>
             <% end %>
             <%= image_tag @post.get_image, class: 'post_image'%> <!--投稿画像表示-->
             <div class = "text">
