@@ -66,6 +66,9 @@
   margin: 20px 0 2px 20px;
 }
 
+.td{
+  text-align: auto;
+}
 
 .post_image{
   width: 100%;
@@ -83,25 +86,34 @@
 
 
 //------editページ------
+.error_messages{
+  margin: 3% 0 -7% 0;
+}
+
 .edit_title{
   margin-top: 7%;
   text-align: center;
+}
+
+.label{
+  padding-top: 2%;
 }
 
 .edit_contents{
   text-align: center;
 }
 
-.image_edit{
-  margin: 6% 0 3% 10%;
+//入力フォームデザイン
+#inputName{
+  border-radius: 130px;
+  padding: 5px 10px;
+  border-width: 1px;
 }
 
-.name_edit{
-  margin: 17px 0 17px 10px;
-}
-
-.introduction_edit{
-  margin: 17px 0 17px -20px;
+#inputIntroduction{
+  border-radius: 130px;
+  padding: 5px 10px;
+  border-width: 1px;
 }
 
 .submit_button{
@@ -110,8 +122,26 @@
 }
 
 .withdrawal_link{
-  margin-top: 10%;
+  margin-top: 3%;
   text-align: center;
+}
+
+.button{
+  margin: 3% 0 3% 0;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  padding: .8em 2em;
+  border: none;
+  border-radius: 25px;
+  background-image: linear-gradient(90deg, rgba(254, 220, 64, 1), rgba(247, 130, 93, 1) 70%);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1em;
+}
+
+.button:hover {
+  opacity: 0.6;
 }
 
 //------unsubscribeページ------

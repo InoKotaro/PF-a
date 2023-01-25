@@ -9,7 +9,7 @@ class Post < ApplicationRecord
   #「uniqueness: false」で同じタイトル、本文投稿可能になる
   validates :image, presence: true
   validates :title, length: { minimum: 1, maximum: 15}, presence: true, uniqueness: false
-  validates :introduction, length: { minimum: 1, maximum: 200 }, presence: true, uniqueness: false
+  validates :introduction, length: { minimum: 1, maximum: 100 }, presence: true, uniqueness: false
 
   #投稿時写真有無判断
   def get_image

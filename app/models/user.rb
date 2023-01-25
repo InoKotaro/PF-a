@@ -18,7 +18,7 @@ class User < ApplicationRecord
 
   #ユーザー名,自己紹介文バリデーション 文字数指定あり
   #同じ名前で登録可能 管理者はemailでユーザー識別
-  validates :name, length: { minimum: 1, maximum: 15 }, presence: true, uniqueness: false
+  validates :name, length: { minimum: 1, maximum: 10}, presence: true, uniqueness: false
   validates :introduction, length: { maximum: 30 }
 
   #プロフィール画像サイズ処理
@@ -67,7 +67,7 @@ class User < ApplicationRecord
     super && (is_valid == true)
   end
 
-  #ゲストログイン機能//取り扱い注意//
+  #ゲストログイン機能//取り扱い注意
   def self.guest
     find_or_create_by!(name: 'ゲスト', email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
@@ -76,7 +76,7 @@ class User < ApplicationRecord
 
   #users/showで使用メソッド
   def is_guest?
-    self.name == "guestuser"
+    self.name == "ゲスト"
   end
 
 end

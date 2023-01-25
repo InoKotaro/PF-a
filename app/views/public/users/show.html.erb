@@ -1,6 +1,6 @@
 <div class = "container">
   <div class = "row">
-<%=   flash[:notice]  %>
+
     <!--ユーザー情報-->
     <div class = "user_info">
 
@@ -40,8 +40,7 @@
 
     </div> <!--user_info閉じ-->
 
-   <!--ユーザーの投稿一覧-->
-    <div>
+    <div> <!--ユーザーの投稿一覧-->
       <%= render 'public/posts/post_list', posts: @posts %>
     </div>
 

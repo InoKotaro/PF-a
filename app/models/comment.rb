@@ -3,6 +3,5 @@ class Comment < ApplicationRecord
   belongs_to :post #postが1側
 
   #バリデージョン 一文字以上必要
-  validates :comment, length: { minimum: 1 }
+  validates :comment, length: { minimum: 1, maximum: 100 }
 end
-

@@ -1,5 +1,6 @@
 class Public::UsersController < ApplicationController
-  before_action :is_matching_login_user, only: [:show,:edit, :update, :destroy] #ログイン中ユーザーのみアクセス可能ページ
+  before_action :authenticate_user!, only: [:show]
+  before_action :is_matching_login_user, only: [:edit, :update, :destroy] #ログイン中ユーザーのみアクセス可能ページ
   before_action :ensure_guest_user, only: [:edit] #ゲストログインユーザーはユーザー編集ページへアクセス不可
 
   def show
@@ -14,8 +15,11 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params) #パラメータあり
-    redirect_to user_path(@user)
+    if @user.update(user_params) #パラメータあり
+      redirect_to user_path(@user)
+    else
+      render :edit #保存失敗はnewページへ遷移
+    end
   end
 
   #いいね一覧
@@ -66,7 +70,6 @@ class Public::UsersController < ApplicationController
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.name == "ゲスト"
- flash[:notice] = 'テスト'
       redirect_to user_path(current_user)
     end
   end

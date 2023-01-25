@@ -5,7 +5,8 @@ ja:
         name: ユーザー名
         email: メールアドレス
         password: パスワード
-        password_confirmation: パスワード確認
+        password_confirmation: パスワード
+        introduction: 自己紹介
       post:
         image: 画像
         title: タイトル

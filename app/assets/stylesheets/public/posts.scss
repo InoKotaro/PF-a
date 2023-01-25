@@ -3,6 +3,44 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .posts{ //css個別指定
 
+//------newページ------
+.error_messages{
+  margin: 3% 0 -7% 0;
+}
+
+.post_title{
+  margin-top: 7%;
+  text-align: center;
+}
+
+.label{
+  padding-top: 2%;
+  white-space: nowrap;
+}
+
+.post_contents{
+  text-align: center;
+}
+
+//入力フォームデザイン
+#post_title{
+  border-radius: 130px;
+  padding: 5px 10px;
+  border-width: 1px;
+}
+
+#post_introduction{
+  border-radius: 30px;
+  padding: 5px 10px;
+  border-width: 1px;
+}
+
+.submit_button{
+  margin-top: 5%;
+  text-align: center;
+}
+
+
 //------showページ------
 .user_profile{
   display: flex;
@@ -46,8 +84,8 @@
 }
 
 .introduction{
-  padding-top: 3%;
-  font-size: 22px;
+  padding: 3% 6% 0 6%;
+  font-size: 20px;
 }
 
 .under_content{

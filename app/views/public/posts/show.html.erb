@@ -16,13 +16,17 @@
                 </div>
               </div>
             <% end %>
+
             <%= image_tag @post.get_image, class: 'post_image'%> <!--投稿画像表示-->
+
             <div class = "text">
               <!--タイトル-->
               <h2 class="title"><%= @post.title %></h2>
 
               <!--紹介文-->
-              <%= simple_format(@post.introduction) %>
+              <div class = "introduction" >
+                <%= simple_format(@post.introduction) %>
+              </div>
 
                <!--投稿日-->
               <div class="text-end">
@@ -30,7 +34,7 @@
                   <%= @post.created_at.strftime('%Y/%m/%d  %H:%M') %>
                 </small>
               </div>
-            </div>
+            </div><!--text閉じ-->
 
             <div class = "under_content">
               <div class = "user_reactions">

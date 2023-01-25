@@ -1,27 +1,57 @@
 <div class = "container">
-  <div class = "row w-75 mx-auto">
+  <div class = "row w-90 mx-auto">
 
     <!--バリデーションエラーメッセージ-->
-    <%= render 'homes/error_message', post: @post %>
+    <div class = "error_messages">
+      <%= render 'homes/post_error_message', post: @post %>
+    </div>
 
     <h3 class = "post_title">投稿フォーム</h3>
     <%= form_with model: @post do |f| %>
       <div class = "post_contents">
 
-        <div class = "image_post">画像
-          &nbsp;&nbsp;&nbsp;<!--空白-->
-          <%= f.file_field :image, accept: "image/*" %>
-        </div>
-        <div class = "title_post">タイトル
-          &nbsp;&nbsp;&nbsp;<!--空白-->
-          <%= f.text_field :title %>
-        </div>
-        <div class = "introduction_post">紹介
-          &nbsp;&nbsp;&nbsp;<!--空白-->
-          <%= f.text_area :introduction %>
-        </div>
+        <table class="table text-nowrap">
+          <thead>
+            <tr>
+              <th style="width: 50%"></th>
+              <th style="width: 50%"></th>
+            </tr>
+          </thead>
 
-      <%= f.submit '投稿' %>
+          <tbody>
+            <tr>
+              <td>
+                <div class = "label">投稿画像</p>
+              </td>
+              <td>
+                <div class = "image_field">
+                  <%= f.file_field :image, accept: "image/*" %>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class = "label">タイトル</p>
+              </td>
+              <td>
+                <%= f.text_field :title %>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class = "label">紹介</p>
+              </td>
+              <td>
+                <%= f.text_area :introduction %>
+              </td>
+            </tr>
+
+          </tbody>
+        </table> <!--table範囲終了-->
+
+      <%= f.submit '投稿' , class: "button" %>
 
     <% end %>
     </div> <!--post_contents閉じ-->

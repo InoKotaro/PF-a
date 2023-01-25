@@ -1,69 +1,61 @@
 <div class = "container">
   <div class = "row w-75 mx-auto">
 
-    <!--バリデーション-->
+    <!--バリデーション/user-->
     <div class = "error_messages">
-      <% if @user.errors.any? %>
-        <%= @user.errors.count %>件のエラーが発生しました
-        <ul>
-          <% @user.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      <% end %>
+      <%= render 'homes/user_error_message', user: @user %>
     </div>
 
     <h3 class = "sign_up_title">新規登録</h3>
     <%= form_with model: @user, url: user_registration_path do |f| %>
     <!--%= render "public/shared/error_messages", resource: resource %-->
 
-      <div class = "sign_up_contents mx-auto">
+      <div class = "sign_up_contents">
         <table class="table">
           <thead>
             <tr>
-              <th scope="col"></th>
+              <th scope="col w-50"></th>
+              <th scope="col w-50"></th>
             </tr>
           </thead>
 
           <tbody>
               <tr>
                 <td>
-                  <div class="field_name">
-                    <%= f.label :name %>
-                    &nbsp;&nbsp;&nbsp;<!--空白-->
-                    <%= f.text_field :name %>
-                  </div>
+                  <%= f.label :name %>
+                </td>
+                <td>
+                  <%= f.text_field :name %>
                 </td>
               </tr>
 
               <tr>
                 <td>
-                  <div class="field_email">
-                    <%= f.label :email %>&nbsp;&nbsp;&nbsp;<!--空白-->
-                    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-                  </div>
+                  <%= f.label :email %>
+                </td>
+                <td>
+                 <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
                 </td>
               </tr>
 
               <tr>
                 <td>
-                  <div class="field_passward">
-                    <%= f.label :password %>
-                    <% if @minimum_password_length %>
+                  <%= f.label :password %>
+                  <% if @minimum_password_length %>
                     <em>(<%= @minimum_password_length %>字以上)</em>
-                    <% end %>
-                    <%= f.password_field :password, autocomplete: "new-password" %>
-                  </div>
+                  <% end %>
+                </td>
+                <td>
+                  <%= f.password_field :password, autocomplete: "new-password" %>
                 </td>
               </tr>
 
               <tr>
                 <td>
-                    <div class="field_passward-confirmation">
-                      <%= f.label :password_confirmation %>
-                      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-                    </div>
-                  </div>
+                    <%= f.label :password_confirmation %>
+                </td>
+                <td>
+                    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
                 </td>
               </tr>
 
@@ -71,7 +63,7 @@
         </table> <!--table範囲終了-->
 
         <div class="actions">
-          <%= f.submit "Sign up" %>
+          <%= f.submit "登録", class: "button" %>
         </div>
 
         <%= render "public/shared/links" %>
@@ -84,29 +76,66 @@
 
 
 <style>
+
 .error_messages{
   margin: 3% 0 -7% 0;
 }
 
 .sign_up_title{
-  margin: 7% 0 0 7%;
+  margin-top: 7%;
+  text-align: center;
+}
+
+.table{
+  width: 100%;
+  table-layout: fixed;
 }
 
 .sign_up_contents{
- margin-top: 2%;
+ text-align: center;
 }
 
-.field_name{
-  margin: 17px 0 17px 25%;
+/*入力フォームデザイン*/
+#user_name{
+  border-radius: 130px;
+  padding: 3px 10px;
+  border-width: 1px;
 }
 
-.field_email{
-  margin: 17px 0 17px 21%;
+#user_email{
+  border-radius: 130px;
+  padding: 3px 10px;
+  border-width: 1px;
 }
 
-.field_passward{
-  margin: 17px 0 17px 17%;
-  white-space: nowrap;
+#user_password{
+  border-radius: 130px;
+  padding: 3px 10px;
+  border-width: 1px;
+}
+
+#user_password_confirmation{
+  border-radius: 130px;
+  padding: 3px 10px;
+  border-width: 1px;
+}
+
+.button{
+  margin: 3% 0 3% 0;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  padding: .8em 2em;
+  border: none;
+  border-radius: 25px;
+  background-image: linear-gradient(90deg, rgba(254, 220, 64, 1), rgba(247, 130, 93, 1) 70%);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1em;
+}
+
+.button:hover {
+  opacity: 0.6;
 }
 
 </style>

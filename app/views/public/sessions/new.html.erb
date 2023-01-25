@@ -1,26 +1,111 @@
-<h2>Log in</h2>
+<div class = "container">
+  <div class = "row w-75 mx-auto">
+
+  <h3 class = "sign_in_title">ログイン</h3>
 
 <%= form_with model: @user, url: user_session_path do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+  <div class = "sign_in_contents">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col w-50"></th>
+          <th scope="col w-50"></th>
+        </tr>
+      </thead>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <tbody>
+        <tr>
+          <td>
+            <%= f.label :email %>
+          </td>
+          <td>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <%= f.label :password %>
+          </td>
+          <td>
+            <%= f.password_field :password, autocomplete: "current-password" %>
+          </td>
+        </tr>
+
+      </tbody>
+    </table> <!--table範囲終了-->
+
+    <div class="actions">
+      <%= f.submit "ログイン", class: "button" %>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
+  </div> <!--sign_in_contents閉じ-->
 <% end %>
 
-<%= render "public/shared/links" %>
+  </tbody>
+</table> <!--table範囲終了-->
+
+<style>
+
+.btn{
+  height: 39px;
+  border-radius: 130px;
+  border: none;
+  background-image: linear-gradient(90deg, rgba(254, 220, 64, 1), rgba(247, 130, 93, 1) 70%);
+}
+
+.btn:hover {
+  opacity: 0.6;
+}
+
+.error_messages{
+  margin: 3% 0 -7% 0;
+}
+
+.sign_in_title{
+  margin-top: 7%;
+  text-align: center;
+}
+
+.table{
+  width: 100%;
+  table-layout: fixed;
+}
+
+.sign_in_contents{
+ text-align: center;
+}
+
+/*入力フォームデザイン*/
+#user_email{
+  border-radius: 130px;
+  padding: 3px 10px;
+  border-width: 1px;
+}
+
+#user_password{
+  border-radius: 130px;
+  padding: 3px 10px;
+  border-width: 1px;
+}
+
+.button{
+  margin: 3% 0 3% 0;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  padding: .8em 2em;
+  border: none;
+  border-radius: 25px;
+  background-image: linear-gradient(90deg, rgba(254, 220, 64, 1), rgba(247, 130, 93, 1) 70%);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1em;
+}
+
+.button:hover {
+  opacity: 0.6;
+}
+
+</style>

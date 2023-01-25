@@ -2,35 +2,34 @@
   <div class = "row">
 
     <h3 class = "title">検索結果</h2>
+    <!--検索対象モデルがUserの時 -->
+    <% if @range == "User" %>
 
-      <!--検索対象モデルがUserの時 -->
-      <% if @range == "User" %>
+      <table class="table mx-auto w-50">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
 
-        <table class="table mx-auto w-50">
-          <thead>
+        <tbody>
+          <% @users.each do |user| %>
             <tr>
-              <th scope="col"></th>
-              <th scope="col"></th>
+              <td>
+                <%= link_to user_path(user) do %> <!--リンク化-->
+                  <%= image_tag user.get_profile_image(700,700), class: 'result_frofile_image'%>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to user_path(user) do %> <!--リンク化-->
+                  <div class = "result_frofile_name"><%= user.name %></div>
+                <% end %>
+              </td>
             </tr>
-          </thead>
-
-          <tbody>
-            <% @users.each do |user| %>
-              <tr>
-                <td>
-                  <%= link_to user_path(user) do %> <!--リンク化-->
-                    <%= image_tag user.get_profile_image(100,100), class: 'result_frofile_image'%>
-                  <% end %>
-                </td>
-                <td>
-                  <%= link_to user_path(user) do %> <!--リンク化-->
-                    <div class = "result_frofile_name"><%= user.name %></div>
-                  <% end %>
-                </td>
-              </tr>
-            <% end %> <!--each文範囲終了-->
-          </tbody>
-        </table> <!--table範囲終了-->
+          <% end %> <!--each文範囲終了-->
+        </tbody>
+      </table> <!--table範囲終了-->
 
       <% else %> <!--if文途中-->
 
