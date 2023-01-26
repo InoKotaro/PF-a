@@ -3,6 +3,14 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .homes{ //css個別指定
 
+//homes-top背景に適用
+background-image: image-url("shibuya1.jpg");
+background-attachment: fixed;
+background-size: cover;
+background-position: center;
+background-color: rgba(255,255,255,0.8);
+background-blend-mode: lighten;
+
 //------search------
 .search_form{
   margin: 1% 0 1% 1.6%;
@@ -49,7 +57,6 @@
   margin: 20px 0 2px 20px;
 }
 
-
 .post_image{
   width: 100%;
   aspect-ratio: 5 / 3;
@@ -62,6 +69,17 @@
 
 .user_reaction{
   text-align: center;
+}
+
+//右下固定ボタン
+#post_button{
+  position: fixed;
+  right: 30px;
+  bottom: 20px;
+}
+.post_button{
+  width: 100px;
+  height: 100px;
 }
 
 } //css個別指定範囲終了

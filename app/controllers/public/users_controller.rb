@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:show]
-  before_action :is_matching_login_user, only: [:edit, :update, :destroy] #ログイン中ユーザーのみアクセス可能ページ
+  before_action :authenticate_user!, only: [:show, :edit]
+  before_action :is_matching_login_user, only: [:edit, :update, :destroy, :unsubscribe] #ログイン中ユーザーのみアクセス可能ページ
   before_action :ensure_guest_user, only: [:edit] #ゲストログインユーザーはユーザー編集ページへアクセス不可
 
   def show
@@ -24,7 +24,8 @@ class Public::UsersController < ApplicationController
 
   #いいね一覧
   def favorite_list
-    @favorite_list = Favorite.where(user: current_user).pluck(:post_id)
+    favorite = Favorite.where(user: current_user).pluck(:post_id)
+    @favorite_list = Post.find(favorite)
   end
 
   #-----------------フォロー機能↓------------------

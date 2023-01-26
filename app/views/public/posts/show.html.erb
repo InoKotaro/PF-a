@@ -44,14 +44,16 @@
                 </div>
                 <div id = "comment_count">
                   <!--コメント数-->
-                  <%= "#{@post.comments.count} コメント" %>
+                  <%= @post.comments.count %>&nbsp;コメント
                 </div>
               </div>
 
-                <!--投稿者とログイン中ユーザーが一致した場合のみ削除ボタン表示-->
+              <!--投稿者とログイン中ユーザーが一致した場合のみ削除ボタン表示-->
               <div class = "post_delete">
                 <% if @post.user == current_user %>
-                  <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "投稿を削除しますか？"} %>
+                  <%= link_to post_path(@post), method: :delete, data: {confirm: "投稿を削除しますか？"} do %>
+                    <i class="fa-solid fa-trash"></i>
+                  <% end %>
                 <% end %>
               </div>
             </div> <!--under_content閉じ-->

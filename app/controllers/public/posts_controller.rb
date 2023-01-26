@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-   before_action :authenticate_user!, only: [:show]
+  before_action :authenticate_user!
   before_action :is_matching_login_user, only: [:destroy] #ログイン中ユーザーのみアクセス可能ページ
 
   #index機能はhomes/topを使用

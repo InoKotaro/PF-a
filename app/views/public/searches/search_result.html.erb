@@ -1,7 +1,7 @@
 <div class = "container">
   <div class = "row">
 
-    <h3 class = "title">検索結果</h2>
+    <h3 class = "title">検索結果</h3>
     <!--検索対象モデルがUserの時 -->
     <% if @range == "User" %>
 
@@ -31,13 +31,13 @@
         </tbody>
       </table> <!--table範囲終了-->
 
-      <% else %> <!--if文途中-->
+    <% else %> <!--if文途中-->
 
-        <div>
-          <%= render 'public/posts/post_list', posts: @posts %>
-        </div>
+      <div> <!--検索対象モデルがpostの時 -->
+        <%= render 'public/posts/post_list', posts: @posts %>
+      </div>
 
-      <% end %> <!--if文範囲終了-->
+    <% end %> <!--if文範囲終了-->
 
   </div> <!--row閉じ-->
 </div> <!--container閉じ-->

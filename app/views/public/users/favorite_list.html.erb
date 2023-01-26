@@ -1,24 +1,31 @@
 <div class = "container">
   <div class = "row">
-    <h3 class = "favorite_list_title">いいね一覧</h3>
+
+    <h3 class "title">いいね一覧</h3>
 
     <% @favorite_list.each do |list| %>
+
       <div class="col-md-4">
-        <div class = "card h-90">
+        <div class = "card">
           <div class = "card-body ">
 
-            <%= link_to user_path(list.user) do %> <!--画像リンク化-->
-              <%= image_tag list.user.get_profile_image(100,100), class: 'frofile_image' %><!--ユーザーアイコン-->
-              &nbsp;<!--空白-->
-              <%= list.user.name %> <!--名前-->
+            <%= link_to user_path(list.user) do %> <!--リンク化-->
+              <div class = "user_profile">
+                <div class = "user_profile_image">
+                  <%= image_tag list.user.get_profile_image(700,700), class: 'frofile_image' %><!--ユーザーアイコン-->
+                </div>
+                <div class = "user_profile_name">
+                  <%= list.user.name %> <!--名前-->
+                </div>
+              </div>
             <% end %>
 
-            <%= link_to post_path(list) do %> <!--画像リンク化-->
+            <%= link_to post_path(list) do %> <!--リンク化-->
               <p><%= image_tag list.get_image, class: 'post_image' %></p>
               <div class = "user_reaction">
-                <%= "#{list.comments.count} コメント" %>
-                &nbsp;<!--空白-->
-                <%= "#{list.favorites.count} いいね" %>
+                <i class="fa-regular fa-heart"></i> <%= list.favorites.count %>
+                &nbsp;&nbsp;<!--空白-->
+               <i class="fa-regular fa-comment">&nbsp;<!--空白--></i><%= list.comments.count %>
                 &nbsp;<!--空白-->
                 <%= list.created_at.strftime('%Y/%m/%d') %><!--投稿日-->
               </div>
@@ -27,8 +34,6 @@
           </div> <!--card-body閉じ-->
         </div>　<!--card m-3閉じ-->
       </div> <!--ccol-md-4閉じ-->
-
-
 
     <% end %>
 

@@ -28,7 +28,44 @@
 }
 
 #follow_botton{
-  margin: 1% 0 2% 1%;
+  margin: 2% 0 3% 1%;
+}
+
+.following_button{
+  margin: 3% 0 3% 0;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  padding: .8em 2em;
+  border: none;
+  border-radius: 25px;
+  background-image: linear-gradient(90deg, rgba(240, 245, 144, 1), rgba(7, 180, 12, 1) 60%);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1em;
+}
+
+.following_button:hover {
+  opacity: 0.6;
+}
+
+.followi_free_button{
+  margin: 3% 0 3% 0;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  padding: .8em 2em;
+  border: none;
+  border-radius: 25px;
+  background-image: linear-gradient(90deg, rgba(207, 63, 245, 1), rgba(209, 90, 90, 1) 60%);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1em;
+}
+
+
+.followi_free_button:hover {
+  opacity: 0.6;
 }
 
 .follow_list{

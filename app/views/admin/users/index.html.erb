@@ -3,7 +3,6 @@
 
     <h1>管理者専用ページ</h1>
 
-
       <table class="table">
         <thead>
           <tr>
@@ -17,20 +16,14 @@
         <tbody>
           <% @users.each do |user| %>
             <tr>
-              <td>
-                <%= user.name %>
-              </td>
-
-              <td>
-                <%= user.email %>
-              </td>
-
+              <td><%= user.name %></td> <!--ユーザー名-->
+              <td> <%= user.email %></td> <!--メールアドレス-->
               <td>
                 <!--ユーザーアカウントステータス-->
                 <% if user.is_valid %>
-                    <strong class="text-secondary">稼働中</strong> <!--使用可能-->
+                    <strong class="text-success">稼働中</strong> <!--使用中-->
                   <% else %>
-                    <strong class="text-success">停止中</strong> <!--使用停止-->
+                    <strong class="text-danger">停止中</strong> <!--使用停止中-->
                 <% end %>
               </td>
 
@@ -39,15 +32,8 @@
 
               </td>
 
-
-
-
-
-
-    <% end %>
-    </table> <!--table範囲終了-->
+          <% end %>
+        </table> <!--table範囲終了-->
 
   </div> <!--row閉じ-->
 </div> <!--container閉じ-->
-
-

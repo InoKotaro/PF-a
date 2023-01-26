@@ -1,0 +1,2 @@
+$("#follow_botton").html("<%= j(render 'public/relationships/follow_btn', user: @user) %>");
+$("#followers").html("<%= j( link_to "#{@user.followers.count} フォロワー", user_followers_path(@user)) %>");

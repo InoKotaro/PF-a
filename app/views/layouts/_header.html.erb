@@ -1,7 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" style = "background-image: linear-gradient(90deg, rgba(14, 244, 255, 1), rgba(65, 164, 253, 1) 75%);">
   <div class = "container-fluid">
 
-    <a><%= link_to 'ロゴ', root_path, class: "navbar-brand" %></a>
+
+      <div class="logo_area">
+        <%= link_to root_path, class: "navbar-brand" do %>
+          <%= image_tag 'logo.svg', class: "logo" %>
+        <% end %>
+      </div>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -10,25 +16,33 @@
       <ul class="navbar-nav ms-auto me-3">
         <% if user_signed_in? %>
 
-          <li class="d-flex align-items-center">
+          <li class="d-flex align-items-center text-light">
             <%= current_user.name %> さん、こんにちは！
           </li>
+
+          <!--aboutに遷移-->
           <li class="nav-item">
-            <%= link_to 'トップ', root_path, class: 'nav-link text-center border rounded'%>
+            <%= link_to about_path, class: 'nav-link text-center border rounded' do%>
+              <i class="fa-solid fa-question"></i>
+            <% end %>
           </li>
-          <li class="nav-item">
-            <%= link_to '投稿フォーム', new_post_path, class: 'nav-link text-center border rounded'%>
+
+          <!--topに遷移-->
+           <li class="nav-item">
+            <%= link_to root_path, class: 'nav-link text-center border rounded' do%>
+              <i class="fa-solid fa-house"></i>
+            <% end %>
           </li>
 
           <!--天気-->
           <li class="nav-item">
-            <a class="nav-link text-center border rounded" href="https://weathernews.jp/onebox/35.651604/139.705455/q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%B8%8B%E8%B0%B7%E5%8C%BA&v=1671e08ac789d4fc5f0ab768a5efeaefce9bb7f9a787bc06a95de1092ab81e4c&temp=c&lang=ja" target="_blank" rel="noopener noreferrer">渋谷の天気</a>
+            <a class="nav-link text-center border rounded" href="https://weathernews.jp/onebox/35.651604/139.705455/q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%B8%8B%E8%B0%B7%E5%8C%BA&v=1671e08ac789d4fc5f0ab768a5efeaefce9bb7f9a787bc06a95de1092ab81e4c&temp=c&lang=ja" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-sun"></i></a>
           </li>
 
           <!--鉄道情報 ドロップダウン式-->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-center border rounded" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <span>鉄道情報</span>
+              <span><i class="fa-solid fa-train-subway"></i></span>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class = "rails_company">JR</a></li>
@@ -50,24 +64,35 @@
             </ul>
           </li>
 
-          <li>
-            <%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-center text-secondary border rounded' %>
+          <li> <!--user/showに遷移-->
+            <%= link_to  user_path(current_user.id), class: 'nav-link text-center text-secondary border rounded' do %>
+              <i class="fa-solid fa-user"></i>
+            <% end %>
           </li>
-          <li>
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-center text-secondary border rounded' %>
+
+          <li> <!--ログアウト-->
+            <%= link_to  destroy_user_session_path, method: :delete, class: 'nav-link text-center text-secondary border rounded' do %>
+              <i class="fa-solid fa-right-from-bracket"></i>
+            <% end %>
           </li>
         <% elsif admin_signed_in? %>
-          <li>
-            <%= link_to '管理者ログアウト', destroy_admin_session_path, class: 'nav-link text-center border rounded', method: :delete %>
+          <li> <!--管理者用ログアウト-->
+            <%= link_to  destroy_admin_session_path, class: 'nav-link text-center border rounded', method: :delete do %>
+              <i class="fa-solid fa-right-from-bracket"></i>
+            <% end %>
         <% else %>
-          <li>
-            <%= link_to 'ゲストログイン', users_guest_sign_in_path, class: "nav-link btn text-center btn-secondary btn-sm mb-3 sign_in", method: :post %>
+          <li> <!--ゲストログイン-->
+            <%= link_to 'ゲストログイン', users_guest_sign_in_path, class: 'nav-link text-center text-center border rounded', method: :post %>
           </li>
-          <li>
-            <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-center border rounded'  %>
+          <li> <!--新規登録-->
+            <%= link_to  new_user_registration_path, class: 'nav-link text-center border rounded' do %>
+              <i class="fa-solid fa-user-plus"></i>
+            <% end %>
           </li>
-          <li>
-            <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-center border rounded' %>
+          <li>　<!--ログイント-->
+            <%= link_to new_user_session_path, class: 'nav-link text-center border rounded' do %>
+              <i class="fa-solid fa-right-to-bracket"></i>
+            <% end %>
           </li>
 
         <% end %> <!--if文閉じ-->
