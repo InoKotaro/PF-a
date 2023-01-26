@@ -64,32 +64,43 @@
             </ul>
           </li>
 
-          <li> <!--user/showに遷移-->
+          <!--user/showに遷移-->
+          <li class="nav-item">
             <%= link_to  user_path(current_user.id), class: 'nav-link text-center text-secondary border rounded' do %>
               <i class="fa-solid fa-user"></i>
             <% end %>
           </li>
 
-          <li> <!--ログアウト-->
+          <!--ログアウト-->
+          <li class="nav-item">
             <%= link_to  destroy_user_session_path, method: :delete, class: 'nav-link text-center text-secondary border rounded' do %>
               <i class="fa-solid fa-right-from-bracket"></i>
             <% end %>
           </li>
         <% elsif admin_signed_in? %>
-          <li> <!--管理者用ログアウト-->
+
+          <!--管理者用ログアウト-->
+          <li class="nav-item">
             <%= link_to  destroy_admin_session_path, class: 'nav-link text-center border rounded', method: :delete do %>
               <i class="fa-solid fa-right-from-bracket"></i>
             <% end %>
+          </li>
         <% else %>
-          <li> <!--ゲストログイン-->
+
+          <!--ゲストログイン-->
+          <li class="nav-item">
             <%= link_to 'ゲストログイン', users_guest_sign_in_path, class: 'nav-link text-center text-center border rounded', method: :post %>
           </li>
-          <li> <!--新規登録-->
+
+          <!--新規登録-->
+          <li class="nav-item">
             <%= link_to  new_user_registration_path, class: 'nav-link text-center border rounded' do %>
               <i class="fa-solid fa-user-plus"></i>
             <% end %>
           </li>
-          <li>　<!--ログイント-->
+
+          <!--ログイン-->
+          <li class="nav-item">
             <%= link_to new_user_session_path, class: 'nav-link text-center border rounded' do %>
               <i class="fa-solid fa-right-to-bracket"></i>
             <% end %>
