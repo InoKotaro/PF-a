@@ -1,39 +1,39 @@
 <div class = "container">
   <div class = "row w-50 mx-auto">
 
-      <h3 class = "followings_title">フォロー</h3>
-      <% if @users.exists? %>
+    <h3 class = "followings_title">フォロー</h3>
+    <% if @users.exists? %>
 
-       <table class="table">
-          <thead>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @users.each do |user| %>
             <tr>
-              <th scope="col"></th>
-              <th scope="col"></th>
+              <td>
+                <%= link_to user_path(user) do %> <!--リンク化-->
+                  <%= image_tag user.get_profile_image(100,100), class: 'result_frofile_image'%>
+                <% end %>
+              </td>
+
+              <td>
+                <%= link_to user_path(user) do %> <!--リンク化-->
+                  <div class = "result_frofile_name"><%= user.name %></div>
+                <% end %>
+              </td>
             </tr>
-          </thead>
+          <% end %> <!--each文範囲終了-->
+        </tbody>
+      </table> <!--table範囲終了-->
 
-          <tbody>
-            <% @users.each do |user| %>
-              <tr>
-                <td>
-                  <%= link_to user_path(user) do %> <!--リンク化-->
-                    <%= image_tag user.get_profile_image(100,100), class: 'result_frofile_image'%>
-                  <% end %>
-                </td>
-
-                <td>
-                  <%= link_to user_path(user) do %> <!--リンク化-->
-                    <div class = "result_frofile_name"><%= user.name %></div>
-                  <% end %>
-                </td>
-              </tr>
-            <% end %> <!--each文範囲終了-->
-          </tbody>
-        </table> <!--table範囲終了-->
-
-      <% else %>
-        <p><br>ユーザーはいません</p> <!--フォロー数０時表示-->
-      <% end %> <!--if文範囲終了-->
+    <% else %>
+      <p class = "not_user"><br>ユーザーはいません</p> <!--フォロー数０時表示-->
+    <% end %> <!--if文範囲終了-->
 
   </div> <!--row閉じ-->
 </div> <!--container閉じ-->

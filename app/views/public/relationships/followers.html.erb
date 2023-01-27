@@ -5,34 +5,34 @@
     <% if @users.exists? %>
 
       <table class="table">
-          <thead>
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @users.each do |user| %>
             <tr>
-              <th scope="col"></th>
-              <th scope="col"></th>
+              <td>
+                <%= link_to user_path(user) do %> <!--リンク化-->
+                  <%= image_tag user.get_profile_image(100,100), class: 'result_frofile_image'%>
+                <% end %>
+              </td>
+
+              <td>
+                <%= link_to user_path(user) do %> <!--リンク化-->
+                  <div class = "result_frofile_name"><%= user.name %></div>
+                <% end %>
+              </td>
             </tr>
-          </thead>
-
-          <tbody>
-            <% @users.each do |user| %>
-              <tr>
-                <td>
-                  <%= link_to user_path(user) do %> <!--リンク化-->
-                    <%= image_tag user.get_profile_image(100,100), class: 'result_frofile_image'%>
-                  <% end %>
-                </td>
-
-                <td>
-                  <%= link_to user_path(user) do %> <!--リンク化-->
-                    <div class = "result_frofile_name"><%= user.name %></div>
-                  <% end %>
-                </td>
-              </tr>
-            <% end %> <!--each文範囲終了-->
-          </tbody>
-        </table> <!--table範囲終了-->
+          <% end %> <!--each文範囲終了-->
+        </tbody>
+      </table> <!--table範囲終了-->
 
     <% else %>
-      <p><br>ユーザーはいません</p> <!--フォロワー数０時表示-->
+      <p class = "not_user"><br>ユーザーはいません</p> <!--フォロワー数０時表示-->
     <% end %> <!--if文範囲終了-->
 
   </div> <!--row閉じ-->
