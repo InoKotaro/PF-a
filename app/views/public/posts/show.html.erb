@@ -1,10 +1,10 @@
 <div class = "container">
   <div class = "row">
     <div class = "col-auto mx-auto">
-
+      
       <div class = "card w-75 mx-auto">
           <div class = "card-body">
-
+            
             <!--投稿詳細-->
             <%= link_to user_path(@post.user) do %> <!--画像リンク化-->
               <div class = "user_profile">
@@ -16,26 +16,26 @@
                 </div>
               </div>
             <% end %>
-
+            
             <%= image_tag @post.get_image, class: 'post_image'%> <!--投稿画像表示-->
-
+            
             <div class = "text">
               <!--タイトル-->
               <h2 class="title"><%= @post.title %></h2>
-
+              
               <!--紹介文-->
               <div class = "introduction" >
                 <%= simple_format(@post.introduction) %>
               </div>
-
-               <!--投稿日-->
+              
+              <!--投稿日-->
               <div class="text-end">
                 <small class="text-black-50">
                   <%= @post.created_at.strftime('%Y/%m/%d  %H:%M') %>
                 </small>
               </div>
             </div><!--text閉じ-->
-
+            
             <div class = "under_content">
               <div class = "user_reactions">
                 <div id = "favorite_button">
@@ -47,7 +47,7 @@
                   <%= @post.comments.count %>&nbsp;コメント
                 </div>
               </div>
-
+              
               <!--投稿者とログイン中ユーザーが一致した場合のみ削除ボタン表示-->
               <div class = "post_delete">
                 <% if @post.user == current_user %>
@@ -57,22 +57,22 @@
                 <% end %>
               </div>
             </div> <!--under_content閉じ-->
-
+            
             <div class = "comment_contents">
               <!--コメント投稿フォーム-->
               <div id = "comment_form">
                 <%= render 'public/comments/comment_form', post: @post, comment: @comment %>
               </div>
-
+              
               <!--コメント一覧-->
               <div id = "comment_list">
                 <%= render 'public/comments/comment_list', post: @post %>
               </div>
             </div> <!--comment_contents閉じ-->
-
+            
           </div> <!--card-body閉じ-->
         </div> <!--card m-3閉じ-->
-
+        
     </div> <!--col閉じ-->
   </div> <!--row閉じ-->
 </div> <!--container閉じ-->

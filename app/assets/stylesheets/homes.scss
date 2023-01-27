@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .homes{ //css個別指定
 
-//homes-top背景に適用
+//背景設定
 background-image: image-url("shibuya1.jpg");
 background-attachment: fixed;
 background-size: cover;
@@ -74,12 +74,23 @@ background-blend-mode: lighten;
 //右下固定ボタン
 #post_button{
   position: fixed;
-  right: 30px;
+  right: 20px;
   bottom: 20px;
 }
 .post_button{
   width: 100px;
   height: 100px;
+}
+
+//aboutページ
+.about_title{
+  margin: 2% 0 1% 0;
+  text-align: center;
+}
+.about_text{
+  margin: 0 auto;
+  width: 60%;
+  text-align: left;
 }
 
 } //css個別指定範囲終了

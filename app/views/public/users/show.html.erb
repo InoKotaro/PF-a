@@ -47,6 +47,13 @@
   </div> <!--row閉じ-->
 </div> <!--container閉じ-->
 
+<!--投稿ボタン-->
+<span id = "post_button">
+  <%= link_to new_post_path do%>
+    <%= image_tag asset_path('post_button.png'), data: {"turbolinks"=>false}, class: "post_button " %>
+  <% end %>
+</span>
+
 <!--ページネーション-->
 <%= paginate @posts, class: 'enter-block'%>
 

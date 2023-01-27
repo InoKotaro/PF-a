@@ -8,25 +8,28 @@
 
         <%= link_to user_path(comment.user) do %> <!--リンク化-->
           <%= image_tag comment.user.get_profile_image(700,700), class: 'frofile_image' %><!--ユーザーアイコン-->
-          &nbsp;<!--空白-->
+          &nbsp;&nbsp;&nbsp;&nbsp;<!--空白-->
           <%= comment.user.name %> <!--名前-->
-        <% end %>
-        &nbsp;&nbsp;&nbsp;<!--空白-->
-        <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
-        &nbsp;&nbsp;&nbsp;<!--空白-->
-        <% if comment.user == current_user %> <!--コメント者とログイン中ユーザーが一致した場合のみ削除ボタン表示-->
-          <%= link_to post_comment_path(comment.post, comment), method: :delete, remote: true, data: {confirm: "コメントを削除しますか？"} do%>
-            <i class="fa-solid fa-trash"></i>
-          <% end %>
         <% end %>
 
         <!--コメント一覧-->
         <p class = "comment_wrap">
           <%= comment.comment %>
         </p>
+
+        <div class = "comment_list_under">
+          <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
+          &nbsp;&nbsp;&nbsp;<!--空白-->
+          <% if comment.user == current_user %> <!--コメント者とログイン中ユーザーが一致した場合のみ削除ボタン表示-->
+            <%= link_to post_comment_path(comment.post, comment), method: :delete, remote: true, data: {confirm: "コメントを削除しますか？"} do%>
+              <i class="fa-solid fa-trash"></i>
+            <% end %>
+          <% end %>
+        </div>
+
       </div> <!--comment閉じ-->
 
-    </div> <!--card閉じ-->
-  </div> <!--card-body閉じ-->
+    </div> <!--card-body閉じ-->
+  </div> <!--card閉じ-->
 
 <% end %> <!--each閉じ-->

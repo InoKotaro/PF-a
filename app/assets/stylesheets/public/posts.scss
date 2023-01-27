@@ -3,6 +3,14 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .posts{ //css個別指定
 
+//背景設定
+background-image: image-url("shibuya2.jpg");
+background-attachment: fixed;
+background-size: cover;
+background-position: center;
+background-color: rgba(255,255,255,0.8);
+background-blend-mode: lighten;
+
 //------newページ------
 .error_messages{
   margin: 3% 0 -7% 0;
@@ -47,7 +55,7 @@
 }
 
 .frofile_image{
-  margin: 10px 0 20px 10px;
+  margin: 10px 0 7px 10px;
   border-radius: 50%;
   width: 70px;
   height: 70px;
@@ -131,8 +139,8 @@
 }
 
 .comment_wrap{
-  margin: auto;
-  width: 35%;
+  margin: 1% auto 2% auto;
+  width: 55%;
   word-wrap: break-word;
   text-align: left;
 }
@@ -162,6 +170,12 @@
 
 .button:hover {
   opacity: 0.6;
+}
+
+.comment_list_under{
+  margin: 3% auto 0 7%;
+  font-size: 12px;
+  color: gray;
 }
 
 } //css個別指定範囲終了

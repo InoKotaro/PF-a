@@ -1,12 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" style = "background-image: linear-gradient(90deg, rgba(14, 244, 255, 1), rgba(65, 164, 253, 1) 75%);">
   <div class = "container-fluid">
 
-
-      <div class="logo_area">
-        <%= link_to root_path, class: "navbar-brand" do %>
-          <%= image_tag 'logo.svg', class: "logo" %>
-        <% end %>
-      </div>
+    <div class="logo_area">
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag 'logo.svg', class: "logo" %>
+      <% end %>
+    </div>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -16,6 +15,7 @@
       <ul class="navbar-nav ms-auto me-3">
         <% if user_signed_in? %>
 
+          <!--ユーザー名-->
           <li class="d-flex align-items-center text-light">
             <%= current_user.name %> さん、こんにちは！
           </li>
@@ -87,6 +87,13 @@
           </li>
         <% else %>
 
+         <!--aboutに遷移-->
+          <li class="nav-item">
+            <%= link_to about_path, class: 'nav-link text-center border rounded' do%>
+              <i class="fa-solid fa-question"></i>
+            <% end %>
+          </li>
+
           <!--ゲストログイン-->
           <li class="nav-item">
             <%= link_to 'ゲストログイン', users_guest_sign_in_path, class: 'nav-link text-center text-center border rounded', method: :post %>
@@ -109,6 +116,5 @@
         <% end %> <!--if文閉じ-->
       </ul> <!--navbar-nav閉じ-->
     </div> <!--collapse閉じ-->
-
   </div> <!--container-fluid閉じ-->
 </nav> <!--navbar閉じ-->
