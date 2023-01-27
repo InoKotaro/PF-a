@@ -9,16 +9,18 @@
         <div class = "card">
           <div class = "card-body ">
 
-            <%= link_to user_path(list.user) do %> <!--リンク化-->
-              <div class = "user_profile">
-                <div class = "user_profile_image">
+            <div class = "user_profile">
+              <div class = "user_profile_image">
+                <%= link_to user_path(list.user) do %> <!--リンク化-->
                   <%= image_tag list.user.get_profile_image(700,700), class: 'frofile_image' %><!--ユーザーアイコン-->
-                </div>
-                <div class = "user_profile_name">
-                  <%= list.user.name %> <!--名前-->
-                </div>
+                <% end %>
               </div>
-            <% end %>
+              <div class = "user_profile_name">
+                <%= link_to user_path(list.user) do %> <!--リンク化-->
+                  <%= list.user.name %> <!--名前-->
+                <% end %>
+              </div>
+            </div>
 
             <%= link_to post_path(list) do %> <!--リンク化-->
               <p><%= image_tag list.get_image, class: 'post_image' %></p>

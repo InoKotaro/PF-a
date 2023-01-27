@@ -173,13 +173,28 @@ background-blend-mode: lighten;
 }
 
 .comment_user_profile{
-  margin: 0 7%;
+  padding: 0 0 0 20%;
+  text-align: left;
+  display: flex;
+}
+
+.comment_user_image{
+  text-align: left;
+}
+
+.comment_user_name{
+  margin: 30px 0 2px 20px;
 }
 
 .comment_list_under{
-  margin: 3% 7% 0 7%;
+  margin: 3% 0 0 60%;
   font-size: 12px;
   color: gray;
+}
+
+.comment_delete{
+  margin: 2% 0 0 75%;
+  font-size: 12px;
 }
 
 } //css個別指定範囲終了

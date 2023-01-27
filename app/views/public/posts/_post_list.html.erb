@@ -6,27 +6,29 @@
         <div class = "card">
           <div class = "card-body">
 
+            <div class = "user_profile">
+              <div class = "user_profile_image">
                 <%= link_to user_path(post.user) do %> <!--リンク化-->
-                      <div class = "user_profile">
-                        <div class = "user_profile_image">
-                            <%= image_tag post.user.get_profile_image(700,700), class: 'frofile_image' %> <!--ユーザーアイコン-->
-                        </div>
-                        <div class = "user_profile_name">
-                            <%= post.user.name %> <!--名前-->
-                        </div>
-                      </div>
+                  <%= image_tag post.user.get_profile_image(700,700), class: 'frofile_image' %> <!--ユーザーアイコン-->
                 <% end %>
+              </div>
+              <div class = "user_profile_name">
+                <%= link_to user_path(post.user) do %> <!--リンク化-->
+                  <%= post.user.name %> <!--名前-->
+                <% end %>
+              </div>
+            </div>
 
-                <%= link_to post_path(post) do %> <!--リンク化-->
-                  <p><%= image_tag post.get_image, class: 'post_image' %></p>
-                  <div class = "user_reaction">
-                    <i class="fa-regular fa-heart"></i> <%= post.favorites.count %>
-                    &nbsp;&nbsp;<!--空白-->
-                    <i class="fa-regular fa-comment">&nbsp;<!--空白--></i><%= post.comments.count %>
-                    &nbsp;<!--空白-->
-                    <%= post.created_at.strftime('%Y/%m/%d') %><!--投稿日-->
-                  </div>
-                <% end %>
+            <%= link_to post_path(post) do %> <!--リンク化-->
+              <p><%= image_tag post.get_image, class: 'post_image' %></p>
+              <div class = "user_reaction">
+                <i class="fa-regular fa-heart"></i> <%= post.favorites.count %>
+                &nbsp;&nbsp;<!--空白-->
+                <i class="fa-regular fa-comment">&nbsp;<!--空白--></i><%= post.comments.count %>
+                &nbsp;<!--空白-->
+                <%= post.created_at.strftime('%Y/%m/%d') %><!--投稿日-->
+              </div>
+            <% end %>
 
           </div> <!--card-body閉じ-->
         </div>　<!--card m-3閉じ-->
