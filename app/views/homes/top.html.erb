@@ -1,12 +1,12 @@
 <div class = "container">
   <div class = "row">
 
-    <div body></div>
-
+    <!--検索フォーム-->
     <div class = "search_form">
       <%= render 'public/searches/search', user: @user, posts: @posts, class: "text-center" %>
     </div>
 
+    <!--全ユーザー投稿一覧-->
     <div>
       <%= render 'public/posts/post_list', posts: @posts %>
     </div>

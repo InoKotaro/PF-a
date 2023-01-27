@@ -3,6 +3,14 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .relationships{ //css個別指定
 
+//背景設定
+background-image: image-url("shibuya5.jpg");
+background-attachment: fixed;
+background-size: cover;
+background-position: center;
+background-color: rgba(255,255,255,0.8);
+background-blend-mode: lighten;
+
 ///フォロー一覧
 //------「フォロー一覧」タイトル------
 .followings_title{

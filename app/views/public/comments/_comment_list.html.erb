@@ -6,11 +6,13 @@
 
       <div class = "comment">
 
-        <%= link_to user_path(comment.user) do %> <!--リンク化-->
-          <%= image_tag comment.user.get_profile_image(700,700), class: 'frofile_image' %><!--ユーザーアイコン-->
-          &nbsp;&nbsp;&nbsp;&nbsp;<!--空白-->
-          <%= comment.user.name %> <!--名前-->
-        <% end %>
+        <div class = "comment_user_profile">
+          <%= link_to user_path(comment.user) do %> <!--リンク化-->
+            <%= image_tag comment.user.get_profile_image(700,700), class: 'frofile_image' %><!--ユーザーアイコン-->
+            &nbsp;&nbsp;&nbsp;&nbsp;<!--空白-->
+            <%= comment.user.name %> <!--名前-->
+          <% end %>
+        </div>
 
         <!--コメント一覧-->
         <p class = "comment_wrap">
