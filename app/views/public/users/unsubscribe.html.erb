@@ -10,7 +10,7 @@
         <div class = "withdrawal">
           <%= link_to '退会しない', root_path %>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--空白-->
-          <%= link_to "退会する", user_withdraw_user_path(@user.id), method: :patch, data: { confirm: "本当に退会しますか？" } %>
+          <%= link_to "退会する", user_withdraw_user_path(@user.id), method: :patch, data: { confirm: "【最終確認】本当に退会しますか？" } %>
         </div>
       </div>
 

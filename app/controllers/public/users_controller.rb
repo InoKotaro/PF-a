@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!, only: [:show, :edit]
-  before_action :is_matching_login_user, only: [:edit, :update, :destroy] #ログイン中ユーザーのみアクセス可能ページ
+  before_action :is_matching_login_user, only: [:edit, :update] #ログイン中ユーザーのみアクセス可能ページ
   before_action :ensure_guest_user, only: [:edit] #ゲストログインユーザーはユーザー編集ページへアクセス不可
 
   def show
@@ -50,7 +50,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:user_id])
     @user.update(is_valid: false) #falseに変更して退会済扱いにする
     reset_session
-    redirect_to root_path, alert: "ご利用ありがとうございました。"
+    redirect_to root_path
   end
 
   private
