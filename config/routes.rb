@@ -32,7 +32,6 @@ Rails.application.routes.draw do
       get :favorite_list, on: :collection
 
       #アカウント削除
-      get "unsubscribe" => "users#unsubscribe", as: "confirm_unsubscribe" #論理削除
       patch "withdraw" => "users#withdraw", as: "withdraw_user" #論理削除
 
       #フォロー

@@ -40,11 +40,6 @@ class Public::UsersController < ApplicationController
   end
   #------------------------------------------------
 
-  #退会画面
-  def unsubscribe
-    @user = current_user
-  end
-
   #退会処理
   def withdraw
     @user = User.find(params[:user_id])

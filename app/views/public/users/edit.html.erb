@@ -54,7 +54,7 @@
         </div>
 
         <div class = "withdrawal_link">
-          <%= link_to '退会', user_confirm_unsubscribe_path(@user.id) %>
+          <%= link_to "アカウント削除", user_withdraw_user_path(@user.id), method: :patch, data: { confirm: "本当にアカウントを削除しますか？\n\nOKを押すとアカウントが削除されます" } %>
         </div>
 
       </div> <!--edit_contents閉じ-->
