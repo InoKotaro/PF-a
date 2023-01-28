@@ -29,13 +29,13 @@ class Post < ApplicationRecord
   #投稿タイトル検索
   def self.looks(search, word)
     if search == "perfect_match"
-      @post = Post.where("title LIKE?","#{word}")
+      @post = Post.where("introduction LIKE?","#{word}")
     elsif search == "forward_match"
-      @post = Post.where("title LIKE?","#{word}%")
+      @post = Post.where("introduction LIKE?","#{word}%")
     elsif search == "backward_match"
-      @post = Post.where("title LIKE?","%#{word}")
+      @post = Post.where("introduction LIKE?","%#{word}")
     elsif search == "partial_match"
-      @post = Post.where("title LIKE?","%#{word}%")
+      @post = Post.where("introduction LIKE?","%#{word}%")
     else
       @post = Post.all.order(created_at: :desc).page(params[:page]) #投稿降順設定/ページネーション
     end
