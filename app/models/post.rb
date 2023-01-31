@@ -8,7 +8,7 @@ class Post < ApplicationRecord
   #バリデーション 文字数指定あり
   #「uniqueness: false」で同じタイトル、本文投稿可能になる
   validates :image, presence: true
-  validates :title, length: { minimum: 1, maximum: 15}, presence: true, uniqueness: false
+  validates :title, length: { minimum: 1, maximum: 9}, presence: true, uniqueness: false
   validates :introduction, length: { minimum: 1, maximum: 100 }, presence: true, uniqueness: false
 
   #投稿時写真有無判断

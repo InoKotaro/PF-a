@@ -27,7 +27,7 @@
                   <%= f.label :name %>
                 </td>
                 <td>
-                  <%= f.text_field :name %>
+                  <%= f.text_field :name, required: true %>
                 </td>
               </tr>
 
@@ -36,7 +36,7 @@
                   <%= f.label :email %>
                 </td>
                 <td>
-                 <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                 <%= f.email_field :email, autofocus: true, required: true, autocomplete: "email" %>
                 </td>
               </tr>
 
@@ -48,7 +48,7 @@
                   <% end %>
                 </td>
                 <td>
-                  <%= f.password_field :password, autocomplete: "new-password" %>
+                  <%= f.password_field :password, required: true, autocomplete: "new-password" %>
                 </td>
               </tr>
 
