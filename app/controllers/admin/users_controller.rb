@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
   before_action :is_matching_admin_user, only: [:index] #管理者のみアクセス可能ページ
 
   def index
-    @users = User.all
+    @users = User.all.page(params[:page])
   end
 
   private

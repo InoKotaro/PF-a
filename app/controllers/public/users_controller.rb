@@ -6,7 +6,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts= @user.posts #特定ユーザーの投稿分のみ格納
-    @posts = @user.posts.order(created_at: :desc).page(params[:page]) #ページネーション
+    @posts = @user.posts.order(created_at: :desc).page(params[:page]) #投稿降順/ページネーション
   end
 
   def edit
